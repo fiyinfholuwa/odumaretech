@@ -74,6 +74,24 @@
 							
                                 
                                  <a href="{{route('instructor')}}" class="nav-item nav-link">Become an Instructor</a>
+
+                                 @auth
+							@if(Auth::check() && Auth::user()->user_type == "2")
+							<a class="d-mobile btn btn-register" href="{{route('admin.dashboard')}}">Dashboard</a>
+							@elseif(Auth::check() && Auth::user()->user_type == "1")
+							<a class="d-mobile btn btn-register" href="{{route('instructor.dashboard')}}">Dashboard</a>
+							@else
+							@if($check_courses)
+							<a class="d-mobile btn btn-register" href="{{route('user.dashboard')}}">Dashboard</a>
+							@else
+							@endif
+							@endif
+                            <a href="{{route('logout')}}" class=" d-mobile btn">Logout</a>
+							@else
+							<a href="{{route('login')}}" class="d-mobile btn">Login</a>
+                            <a class="d-mobile btn btn-register" href="{{route('register')}}">Get Started</a>
+							@endauth
+                            
                                 <!-- <a href="login.html" class="nav-item nav-link">Login</a> -->
                             </div>
                             <div class="ml-auto">
