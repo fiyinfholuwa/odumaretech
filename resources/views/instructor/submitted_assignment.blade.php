@@ -3,7 +3,7 @@
 @section('content')
 
             <div class="row" style="margin:10px">
-            
+
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
@@ -22,11 +22,11 @@
                                                     <th>Review Assignment</th>
 												</tr>
 											</thead>
-											
+
                                             <tbody>
 											<?php $i = 1; ?>
                                             @foreach($assignments as $assignment)
-                                           
+
 											<tr>
 												<td>{{$i++;}}</td>
                                                 <td>{{$assignment->course_name->title}}</td>
@@ -46,14 +46,15 @@
 												</td>
                                                 <td>@if($assignment->status == "graded")
                                                     <span class="btn btn-danger btn-sm">Assignment Graded</span>
+                                                        <a href="{{route('assignment.submitted.to', $assignment->id)}}"  class="btn btn-secondary btn-sm">Update Graded Assignment</a>
                                                     @else
                                                     <a href="{{route('assignment.submitted.to', $assignment->id)}}"  class="btn btn-secondary btn-sm">Grade Assignment</a>
                                                     @endif
                                                 </td>
 											</tr>
-											
+
                                             @endforeach
-                                    
+
                                             </tbody>
 										</table>
 									</div>
@@ -61,7 +62,7 @@
 							</div>
 						</div>
 
-				
+
             </div>
 
 @endsection

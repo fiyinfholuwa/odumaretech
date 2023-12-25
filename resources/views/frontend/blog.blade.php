@@ -1,7 +1,7 @@
 @extends('frontend.app')
 
 @section('title')
-Blog 
+Blog
 @endsection
 
 @section('content')
@@ -20,10 +20,34 @@ Blog
                 </div>
             </div>
 
+            <div class="about page">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-6">
+                    <div class="about-img">
+                        <img src="https://cdn.get.tech/blog/wp-content/uploads/2018/10/content-curation.jpg" alt="Image">
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-6">
+                    <div class="section-header text-left">
+                        <p>Dive into our blog posts
+                        </p>
+                    </div>
+                    <div class="about-text">
+
+                        <p>
+                            Thoughtfully curated by experts to seamlessly guide your learning experience. Read and learn with confidence
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 				 <!-- Blog Start -->
                  <div class="blog">
                 <div class="container">
-                    
+
                     <div class="row">
                         @if(count($posts) > 0)
 						@foreach($posts as $post)
@@ -60,5 +84,5 @@ Blog
             </div>
             <!-- Blog End -->
 
-            
+
 @endsection

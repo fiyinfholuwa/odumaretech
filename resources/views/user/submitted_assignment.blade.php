@@ -3,7 +3,7 @@
 @section('content')
 
             <div class="row" style="margin:10px">
-            
+
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
@@ -22,11 +22,11 @@
                                                     <th>Grade</th>
 												</tr>
 											</thead>
-											
+
                                             <tbody>
 											<?php $i = 1; ?>
                                             @foreach($assignments as $assignment)
-                                           
+
 											<tr>
 												<td>{{$i++;}}</td>
                                                 <td>{{$assignment->course_name->title}}</td>
@@ -37,9 +37,9 @@
 													<span class="btn btn-success btn-sm">{{$assignment->status}}<span>
 													@endif
 												</td>
-												
 
-												<td>{!! nl2br($assignment->review) !!}</td>
+
+												<td><a href="#" data-toggle="modal" data-target="#review_{{$assignment->id}}" ><button class="btn btn-info btn-sm"><i class="fas fa-eye"></i>view comment</button></a></td>
                                                 <td>
 													@if($assignment->status_in == 0 || $assignment->status_in == "0")
 													<span class="btn btn-warning btn-sm">under review</span>
@@ -48,9 +48,9 @@
 													@endif
 												</td>
 											</tr>
-											
+                                            @include('user.modal.reviewassignment')
                                             @endforeach
-                                    
+
                                             </tbody>
 										</table>
 									</div>
@@ -58,7 +58,7 @@
 							</div>
 						</div>
 
-				
+
             </div>
 
 @endsection

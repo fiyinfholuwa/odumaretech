@@ -13,7 +13,9 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
+        "league/omnipay": "*",
         "nesbot/carbon": "^2.68",
+        "omnipay/paypal": "*",
         "phpoffice/phpspreadsheet": "^1.29"
     },
     "require-dev": {

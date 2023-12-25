@@ -44,13 +44,13 @@ Privacy Policy
 
                                 <h2>Children's Policy</h2>
                                 <p>
-								OdumareTech's services are not intended for children under the age of 13. We do not knowingly collect personal information from children. If we become aware that we have inadvertently collected personal information from a child under 13, we will promptly delete it.
+                                    OdumareTech's services are not intended for children under the age of 12.. We do not knowingly collect personal information from children without parental consent. Parents or legal guardians are required to provide strict guidance for their child's participation. If personal information is inadvertently collected, we will promptly delete it. We encourage parents to actively engage in and supervise their child's online activities on our platform.
                                 </p>
 
-                            
-                               
+
+
                             </div>
-                            
+
                         </div>
 
                         <div class="col-lg-4">
@@ -70,12 +70,12 @@ Privacy Policy
                                             <p>contact@dumaretech.com</p>
                                         </div>
                                     </div>
-    
+
                                 </div>
-    
+
                                 </div>
-                                
-    
+
+
 
 
                             </div>

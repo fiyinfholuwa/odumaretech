@@ -43,7 +43,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                
+
                                 <h2>Course Description</h2>
                                 <p>
                                     {{$course->description}}
@@ -63,9 +63,9 @@
                                 <p>
                                     {{$course->experience}}
                                 </p>
-                               
+
                             </div>
-                            
+
                         </div>
 
                         <div class="col-lg-4">
@@ -76,7 +76,7 @@
                                         <div class="payment-details">
                                             <div class="">
                                             @if($course->discount == 0 || $course->discount == null)
-									
+
                                             @if($check_user_has_coupon)
                                             <label >Full Payment: #{{number_format($course->price - ($course->price * $coupon_check->discount /100),00) }}</label>
                                             @else
@@ -92,20 +92,18 @@
                                             <label >Full Payment: #{{ number_format($course->price - ($course->price * $course->discount/100),00)}}.00 </label>
                                             @endif
 
-                                            
+
                                             @endif
-
-
 
 
                                             <div>
                                             <form action="{{route('pay')}}" method="post">
 										@csrf
 									<h4>Choose Payment Gateway</h4>
-									<label><img height="50px" width="100px" src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Paystack.png"/></label>
+									<label>Local</label>
 									<input type="radio" value="paystack" name="payment" required/> </br>
-									<!-- <label><img height="50px" width="100px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/1200px-Stripe_Logo%2C_revised_2016.svg.png"/></label>
-									<input type="radio"  value="stripe" name="payment"/> </br> -->
+                                                <label>International</label>
+									<input type="radio"  value="stripe" name="payment"/> </br>
 
 
 									<h4>Payment Type</h4>
@@ -114,7 +112,7 @@
 									<label>Installment (40% of the Actual Cost, then pay remaining later.)</label>
 									<input type="radio"  value="first installment" name="payment_type"/> </br>
 
-                            
+
 									<input type="hidden" name="course_id" value="{{$course->id}}"/>
 									<input type="hidden" name="cohort_id" value="{{$cohort_name != NULL ? $cohort_name->id : 1 }}"/>
 									@if(Auth::check())
@@ -125,16 +123,16 @@
 									@else
 									<input type="hidden" name="amount" value="{{$course->price}}"/>
 									@endif
-									
+
 									@else
 									@if($check_user_has_coupon)
 									<input type="hidden" name="amount" value="{{$course->price - ($course->price * $course->discount/100) - ($course->price * $coupon_check->discount /100)}}"/>
 									@else
 									<input type="hidden" name="amount" value="{{$course->price - ($course->price * $course->discount/100)}}"/>
 									@endif
-									
+
 									@endif
-									
+
 									@if($has_pending)
 									<button id="myBtn" type="button"  class="btn cta-btn radius-xl text-uppercase">You Already Registered for a course.</button>
 									@else
@@ -180,7 +178,7 @@
                                             <div class="flex-cards">
                                                 <label for="installmentPayment">Installment (40% of the Actual Cost)</label><br>
                                                 <input type="radio" id="installmentPayment" name="payment" value="installment">
-                                        
+
                                             </div>
                                         </div> -->
                                     <!-- <button class="cta-btn" type="submit" id="sendMessageButton">Enroll Now</button> -->
@@ -193,4 +191,6 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 @endsection

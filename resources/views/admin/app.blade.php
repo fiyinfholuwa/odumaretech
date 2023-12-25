@@ -6,7 +6,7 @@
 	<title>OdumareTech</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<!-- <link rel="icon" href="../../assets/img/icon.ico" type="image/x-icon"/> -->
-	
+
 	<!-- Fonts and icons -->
 	<script src="{{asset('../../assets/js/plugin/webfont/webfont.min.js')}}"></script>
 	<script>
@@ -24,8 +24,8 @@
     <meta http-equiv="refresh" content="2;url={{ route('login') }}">
     <script>
         setTimeout(function() {
-            window.location.href = '{{ route("login") }}'; 
-        }, 2000); 
+            window.location.href = '{{ route("login") }}';
+        }, 2000);
     </script>
     @endguest
 
@@ -46,7 +46,7 @@
 		<div style="color:black;" class="main-header" data-background-color="dark">
 			<!-- Logo Header -->
 			<div class="logo-header">
-				
+
 				<a href="{{route('home')}}" class="logo">
 					<!-- <img src="../../assets/img/logoazzara.svg" alt="navbar brand" class="navbar-brand"> -->
 					<span style="background-color:#fff;padding:7px;border-radius:3px;"><img style="width:100px; height:25px; border-radius:5px;"  src="{{asset('frontend/img/img/logo.png')}}" /><span>
@@ -67,19 +67,19 @@
 
 			<!-- Navbar Header -->
 			<nav class="navbar navbar-header navbar-expand-lg">
-				
+
 				<div class="container-fluid">
 					<div class="collapse" id="search-nav">
-						
+
 					</div>
 					@guest
-					
+
 						@php
 							return redirect()->route('login');
 						@endphp
 					@else
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-						
+
 						<li class="nav-item dropdown hidden-caret">
 							<a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fa fa-bell"></i>
@@ -93,7 +93,7 @@
 									@foreach($admin_inbox as $inbox)
 									<li>
 									<div class="notif-center">
-										
+
 										<a href="#">
 											<div class="notif-icon notif-primary"> <i class="fa fa-envelope"></i> </div>
 											<div class="notif-content">
@@ -101,10 +101,10 @@
 													{{$inbox->name}} : {{$inbox->instructor_message}}
 												</span>
 												<span class="time">{{ ($inbox->created_at)->diffForHumans() }}
-												</span> 
+												</span>
 											</div>
 										</a>
-										
+
 									</div>
 								</li>
 									@endforeach
@@ -137,10 +137,10 @@
 								<li>
 								<a class="dropdown-item text-danger" style="font-weight:600;" href="{{route('logout')}}" >Logout</a>
 								</li>
-								
+
 							</ul>
 						</li>
-						
+
 					</ul>
 					@endguest
 				</div>
@@ -149,7 +149,7 @@
 		</div>
 		<!-- Sidebar -->
 		<div class="sidebar">
-			
+
 			<div class="sidebar-wrapper scrollbar-inner">
 				<div class="sidebar-content">
 					<div class="user">
@@ -159,10 +159,10 @@
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
-								
+
 									<span class="user-level">Super Admin</span>
 									<span class="caret"></span>
-									
+
 								</span>
 							</a>
 							<div class="clearfix"></div>
@@ -170,7 +170,7 @@
 						</div>
 					</div>
 					<ul class="nav">
-					
+
 						<li class="nav-item active">
 							<a href="{{route('admin.dashboard')}}">
 								<i class="fas fa-home"></i>
@@ -178,7 +178,7 @@
 								<!-- <span class="badge badge-count">5</span> -->
 							</a>
 						</li>
-						
+
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#base">
 								<i class="fas fa-tag"></i>
@@ -237,7 +237,7 @@
 											<span class="sub-item">All Courses</span>
 										</a>
 									</li>
-									
+
 								</ul>
 							</div>
 						</li>
@@ -259,7 +259,7 @@
 											<span class="sub-item">All Testimonials</span>
 										</a>
 									</li>
-									
+
 								</ul>
 							</div>
 						</li>
@@ -282,7 +282,7 @@
 											<span class="sub-item">MasterClass Attendees</span>
 										</a>
 									</li>
-									
+
 								</ul>
 							</div>
 						</li>
@@ -306,7 +306,13 @@
 											<span class="sub-item">All Innovations</span>
 										</a>
 									</li>
-									
+
+                                    <li>
+                                        <a href="{{route('innovation.apply.view')}}">
+                                            <span class="sub-item">All Innovation Collaborators</span>
+                                        </a>
+                                    </li>
+
 								</ul>
 							</div>
 						</li>
@@ -331,7 +337,7 @@
 											<span class="sub-item">All Posts</span>
 										</a>
 									</li>
-									
+
 								</ul>
 							</div>
 						</li>
@@ -363,7 +369,7 @@
 											<span class="sub-item">Manage Applied Students</span>
 										</a>
 									</li>
-									
+
 								</ul>
 							</div>
 						</li>
@@ -395,7 +401,7 @@
 							</a>
 						</li>
 
-						
+
 						<li class="nav-item">
 							<a href="{{route('admin.chat.all')}}">
 							<i class="fa fa-comments"></i>
@@ -408,14 +414,14 @@
 							<a href="{{route('instructor.application.all')}}">
 							<i class="fa fa-users"></i>
 								<p>Instructor Applications</p>
-							
+
 							</a>
 						</li>
 						<li class="nav-item">
 							<a href="{{route('transaction.all')}}">
 							<i class="fas fa-exchange-alt"></i>
 								<p>All Transactions</p>
-							
+
 							</a>
 						</li>
 
@@ -423,26 +429,26 @@
 							<a href="{{route('coupon.view')}}">
 							<i class="fas fa-gift"></i>
 								<p>Manage Coupons</p>
-							
+
 							</a>
 						</li>
-						
+
 						<li class="nav-item">
 							<a href="{{route('contact.all')}}">
 							<i class="fa fa-envelope"></i>
 								<p>Messages</p>
-							
+
 							</a>
 						</li>
-						
+
 						<li class="nav-item">
-						
+
 						<a href="{{route('logout')}}">
 							<i class="fas fa-sign-out-alt"></i>
 								<p class="text-danger">Logout</p>
 								<!-- <span class="badge badge-count badge-success">4</span> -->
 							</a>
-								
+
 						</li>
 					</ul>
 				</div>
@@ -450,17 +456,17 @@
 		</div>
 		<div class="main-panel">
 			<div class="content">
-				
-					
+
+
                 @yield('content')
-				
-				
+
+
 			</div>
-			
+
 		</div>
-		
+
 		<!-- Custom template | don't include it in your project! -->
-		
+
 		<!-- End Custom template -->
 	</div>
 	<!--   Core JS Files   -->
@@ -558,9 +564,9 @@
       Toastify({ text: "{{ Session::get('message') }}", duration: 3000,
             style: { background: "linear-gradient(to right, #ff0000, #ff0000)" }
     }).showToast();
-    break; 
+    break;
  }
- @endif 
+ @endif
 
 </script>
 

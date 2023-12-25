@@ -18,13 +18,17 @@ Master Class
                 </div>
             </div>
 
+
             <!-- Contact Start -->
             <div class="contact">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="background-image: url('https://techcrunch.com/wp-content/uploads/2018/09/GettyImages-932628116.jpg?w=730&crop=1'); background-size: cover; background-repeat: no-repeat;" >
                             <div class="contact-info">
-                                
+                                <h3 style="padding: 20px 2px; color: #fff;">Empower Your Skills with Expert Insight</h3>
+                                <p style="color:#fff;">Join Our Exclusive Free Masterclass Series – Your Gateway to Professional Knowledge. Seize the Opportunity to Learn Directly from Industry Experts. Reserve Your Spot Now!
+                                </p>
+
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -91,7 +95,7 @@ Master Class
                                         <input required type="checkbox" name="checkbox" id="checkbox">
                                         <label for="file">Subscribe to our mail list</label>
                                     </div>
-                                    
+
                                     <div>
                                         <button class="btn" type="submit" id="sendMessageButton">Join the waiting list</button>
                                     </div>

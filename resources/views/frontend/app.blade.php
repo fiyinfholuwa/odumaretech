@@ -17,7 +17,7 @@
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="{{asset('frontend/lib/flaticon/font/flaticon.css')}}" rel="stylesheet"> 
+        <link href="{{asset('frontend/lib/flaticon/font/flaticon.css')}}" rel="stylesheet">
         <link href="{{asset('frontend/lib/animate/animate.min.css')}}" rel="stylesheet">
         <link href="{{asset('frontend/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
         <link href="{{asset('frontend/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
@@ -35,7 +35,7 @@
     <body>
 
         <div class="wrapper">
-            
+
 
             <!-- Nav Bar Start -->
             <div class="nav-bar">
@@ -43,7 +43,7 @@
                     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
                         <a href="index.html" class="navbar-brand">
                             <div class="logo small-logo">
-                                <img src="{{asset('frontend/img/img/logo.png')}}" alt="Logo"> 
+                                <img src="{{asset('frontend/img/img/logo.png')}}" alt="Logo">
                             </div>
                         </a>
                         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -51,29 +51,30 @@
                         </button>
 
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-            
+
                                 <div class="logo">
                                     <a href="{{route('home')}}">
-                                        <img src="{{asset('frontend/img/img/logo.png')}}" alt="Logo"> 
+                                        <img src="{{asset('frontend/img/img/logo.png')}}" alt="Logo">
                                     </a>
                                 </div>
-                            
+
                             <div class="navbar-nav">
-                                <a href="{{route('home')}}" class="nav-item nav-link active">Home</a>
-                                <a href="{{route('course')}}" class="nav-item nav-link ">Our Courses</a>
-                                <a href="{{route('blog')}}" class="nav-item nav-link">Blog</a>                              
-                                <a href="{{route('about')}}" class="nav-item nav-link">About</a>
-                                <a href="{{route('contact')}}" class="nav-item nav-link">Contact Us</a>
+                                <a href="{{route('home')}}"  class="nav-item nav-link {{ Request::is('home') ? 'active' : '' }}">Home</a>
+                                <a href="{{ route('course') }}" class="nav-item nav-link {{ Request::is('course') ? 'active' : '' }}">Our Courses</a>
+
+                                <a href="{{route('blog')}}" class="nav-item nav-link {{ Request::is('blog') ? 'active' : '' }}">Blog</a>
+                                <a href="{{route('about')}}" class="nav-item nav-link {{ Request::is('about') ? 'active' : '' }}">About</a>
+                                <a href="{{route('contact')}}" class="nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">Contact Us</a>
                                 @if($masterclass != null || $masterclass != "" )
 								@if($masterclass->visible == "on")
-								<a href="{{route('masterclass')}}" class="nav-item nav-link">Free Masterclass</a>
+								<a href="{{route('masterclass')}}" class="nav-item nav-link {{ Request::is('masterclass') ? 'active' : '' }}">Free Masterclass</a>
 								@else
 								@endif
 							@else
 							@endif
-							
-                                
-                                 <a href="{{route('instructor')}}" class="nav-item nav-link">Become an Instructor</a>
+
+
+                                 <a href="{{route('instructor')}}" class="nav-item nav-link {{ Request::is('instructor') ? 'active' : '' }}">Become an Instructor</a>
 
                                  @auth
 							@if(Auth::check() && Auth::user()->user_type == "2")
@@ -91,10 +92,10 @@
 							<a href="{{route('login')}}" class="d-mobile btn">Login</a>
                             <a class="d-mobile btn btn-register" href="{{route('register')}}">Get Started</a>
 							@endauth
-                            
+
                                 <!-- <a href="login.html" class="nav-item nav-link">Login</a> -->
                             </div>
-                            <div class="ml-auto">
+                            <div style="margin-left: 100px" class="mr-auto">
 
 							@auth
 							@if(Auth::check() && Auth::user()->user_type == "2")
@@ -112,14 +113,14 @@
 							<a href="{{route('login')}}" class="btn">Login</a>
                             <a class="btn btn-register" href="{{route('register')}}">Get Started</a>
 							@endauth
-                                
+
                             </div>
                         </div>
                     </nav>
                 </div>
             </div>
             <!-- Nav Bar End -->
-            
+
             @yield('content')
 
              <!-- Footer Start -->
@@ -265,10 +266,10 @@
       Toastify({ text: "{{ Session::get('message') }}", duration: 3000,
             style: { background: "linear-gradient(to right, #ff0000, #ff0000)" }
     }).showToast();
-    break; 
+    break;
  }
- @endif 
+ @endif
 </script>
-   
+
     </body>
 </html>

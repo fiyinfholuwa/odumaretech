@@ -17,6 +17,11 @@ return new class extends Migration
             $table->text('github')->nullable();
             $table->text('link')->nullable();
             $table->string('status', 50)->nullable();
+            $table->string('start_date', 50)->nullable();
+            $table->string('end_date', 50)->nullable();
+            $table->string('duration', 50)->nullable();
+            $table->text('description')->nullable();
+            $table->text('requirement')->nullable();
             $table->text('image')->nullable();
             $table->timestamps();
         });

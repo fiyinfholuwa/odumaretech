@@ -20,7 +20,7 @@ use App\Models\LiveSession;
 class AuthController extends Controller
 {
     public function logout(){
-       
+
         Session::flush();
 
          Auth::logout();
@@ -32,7 +32,7 @@ class AuthController extends Controller
         if (Auth::id()) {
 
             if (Auth::user()->user_type=='2') {
-                
+
                 return redirect()->route('admin.dashboard');
             }elseif(Auth::user()->user_type=='1'){
              return redirect()->route('instructor.dashboard');
@@ -43,7 +43,7 @@ class AuthController extends Controller
                 }else{
                     return redirect()->route('home');
                 }
-                
+
             }
         }else{
             return redirect()->back();
@@ -52,7 +52,7 @@ class AuthController extends Controller
 
     public function user_dashboard(){
         $slides = DB::table('slides')
-        ->join('applied_courses', 'slides.course_id', '=', 'applied_courses.course_id')
+        ->join('applied_courses', 'slides.course_id', '=', 'applied_courses.course_id')->join('cohorts', 'applied_courses.cohort_id', '=', 'cohorts.id')
         ->where('applied_courses.user_id', Auth::user()->id)
         ->where('slides.status', '=', 'active')
         ->count();
@@ -60,20 +60,20 @@ class AuthController extends Controller
         $active = AppliedCourse::where('status', '=', 'pending')->where('user_id', '=', Auth::user()->id)->count();
         $complete =  AppliedCourse::where('status', '=', 'completed')->where('user_id', '=', Auth::user()->id)->count();
         $session = DB::table('live_sessions')
-        ->join('applied_courses', 'live_sessions.course_id', '=', 'applied_courses.course_id')
+        ->join('applied_courses', 'live_sessions.course_id', '=', 'applied_courses.course_id')->join('cohorts', 'applied_courses.cohort_id', '=', 'cohorts.id')
         ->where('applied_courses.user_id', Auth::user()->id)
         ->where('live_sessions.status', '=', 'active')
         ->count();
 
         $assignment = DB::table('assignments')
-        ->join('applied_courses', 'assignments.course_id', '=', 'applied_courses.course_id')
+        ->join('applied_courses', 'assignments.course_id', '=', 'applied_courses.course_id')->join('cohorts', 'applied_courses.cohort_id', '=', 'cohorts.id')
         ->where('applied_courses.user_id', Auth::user()->id)
         ->where('assignments.status', '=', 'active')
         ->count();
         return view('user.dashboard', compact('slides','active', 'complete', 'session', 'assignment') );
     }
     public function admin_dashboard(){
-    
+
         $users = User::where('user_type', '=', '0')->count();
         $instructors = ApprovedInstructor::count();
         $payments = Payment::where('status', '=', 'paid')->sum('amount');

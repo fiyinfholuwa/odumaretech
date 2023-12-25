@@ -76,7 +76,7 @@ class HomeController extends Controller
             'message' => 'Testimonial Successfully Deleted',
             'alert-type' => 'success'
         );
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
     }
 
     public function testimonial_edit($id){
@@ -114,7 +114,14 @@ class HomeController extends Controller
     }
 
     public function company_view(){
-        return view('frontend.company');
+        $courses= Course::paginate(6);
+        return view('frontend.company', compact('courses'));
+    }
+
+
+    public function company_view_detail($id){
+        $course= Course::findOrFail($id);
+        return view('frontend.company_d', compact('course'));
     }
 
     public function company_add(Request $request){
@@ -180,7 +187,7 @@ class HomeController extends Controller
             'name' => $request->last_name
         ];
         Mail::to($request->email)->send(new InstructorApply($mailData));
-        
+
         return redirect()->route('home')->with($notification);
 
     }
@@ -208,8 +215,8 @@ class HomeController extends Controller
         return view('admin.applicant_edit', compact('courses', 'applicant'));
     }
     public function applicant_update(Request $request, $id){
-    
-        
+
+
         $check_email = User::where('email', '=', $request->email)->first();
         if($check_email){
             $notification = array(
@@ -231,7 +238,7 @@ class HomeController extends Controller
         $applicant->status = $request->status;
         $applicant->save();
             $prefix = 'Instructor'; // Prefix or school code
-        $studentID = $this->generateStudentID($prefix); 
+        $studentID = $this->generateStudentID($prefix);
         $password = $this->generateStudentID($request->first_name);
         $user = User::create([
             'first_name' => $request->first_name,
@@ -291,7 +298,7 @@ class HomeController extends Controller
             );
             return redirect()->route('instructor.application.all')->with($notification);
         }
-        
+
     }
 
     public function admin_chat_all(){
@@ -323,19 +330,23 @@ class HomeController extends Controller
     }
 
     public function innovation_add(Request $request){
-       
+
         $image = $request->file('image');
         $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalName();
         $resizedImage = Image::make($image)->resize(200, 200);
         $image->storeAs( '/innovation/'.$filename , $resizedImage, 'public');
         $path = "storage/innovation/".$filename;
-        $bank_statement_save = $path;
         $new_inno = new Innovation;
         $new_inno->name = $request->name;
         $new_inno->github = $request->github;
         $new_inno->link = $request->link;
         $new_inno->status = $request->status;
         $new_inno->image = $path;
+        $new_inno->start_date = $request->start_date;
+        $new_inno->end_date = $request->end_date;
+        $new_inno->duration = $request->duration;
+        $new_inno->description = $request->description;
+        $new_inno->requirement = $request->requirement;
         $new_inno->save();
         $notification = array(
             'message' => 'Innovation Successfully added',
@@ -358,7 +369,7 @@ class HomeController extends Controller
             'message' => 'Innovation Successfully Deleted',
             'alert-type' => 'success'
         );
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
     }
 
     public function innovation_edit($id){
@@ -383,6 +394,11 @@ class HomeController extends Controller
         $inno_update->link = $request->link;
         $inno_update->image = $path;
         $inno_update->status = $request->status;
+        $inno_update->start_date = $request->start_date;
+        $inno_update->end_date = $request->end_date;
+        $inno_update->duration = $request->duration;
+        $inno_update->description = $request->description;
+        $inno_update->requirement = $request->requirement;
         $inno_update->save();
         $notification = array(
             'message' => 'Innovation Successfully updated',
@@ -397,7 +413,7 @@ class HomeController extends Controller
     }
 
     public function blog_add(Request $request){
-       
+
         $image = $request->file('image');
         $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalName();
         $resizedImage = Image::make($image)->resize(200, 200);
@@ -437,9 +453,9 @@ class HomeController extends Controller
              'message' => 'Post Successfully Deleted',
              'alert-type' => 'success'
          );
-         return redirect()->back()->with($notification); 
+         return redirect()->back()->with($notification);
      }
- 
+
 
 
      public function blog_update(Request $request, $id){
@@ -504,7 +520,7 @@ class HomeController extends Controller
             'message' => 'Password Changed Successfully',
             'alert-type' => 'success'
         );
-        
+
         return redirect()->back()->with($notification);
     }else{
         $notification = array(

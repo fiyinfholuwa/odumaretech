@@ -22,14 +22,14 @@ Login
             <div class="contact wow fadeInUp">
                 <div class="container">
                     <div class="section-header text-center">
-                        <p>Don't have an account? 
+                        <p>Don't have an account?
                             <a href="{{route('register')}}">Create on here</a>
                         </p>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="contact-info">
-                                
+                        <div class="col-md-6" style="background-image: url('https://cdn-icons-png.flaticon.com/512/295/295128.png'); background-size: cover;" >
+                            <div  class="contact-info">
+
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -58,7 +58,7 @@ Login
                                     </span>
 
                                     </div>
-                                    
+
                                     <div class="reme">
                                         <div class="control-group">
                                             <input name="remember" type="checkbox" name="checkbox" id="checkbox">
@@ -68,7 +68,7 @@ Login
                                             <a href="{{ route('password.request') }}">Forgot Password?</a>
                                         </div>
                                     </div>
-                                    
+
                                     <div>
                                         <button class="btn" type="submit" id="sendMessageButton">Login</button>
                                     </div>

@@ -18,11 +18,36 @@ Courses
                 </div>
             </div>
 
-                        <!-- Courses Start-->
+    <div class="about page">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-6">
+                    <div class="about-img">
+                        <img src="https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2020_05_software-development-i1.jpg" alt="Image">
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-6">
+                    <div class="section-header text-left">
+                        <p>Unlock Your Potential with Expert-Led Courses</p>
+                    </div>
+                    <div class="about-text">
+
+                        <p>
+                            Our meticulously crafted curriculum, taught by industry professionals, ensures a seamless journey from beginner to pro, setting industry standards while maintaining beginner-friendly accessibility
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Courses Start-->
             <div class="service">
                 <div class="container">
                     <div class="section-header text-center">
-        
+
                         <!-- <h2>We Provide Highly Structured Training and Courses</h2> -->
                     </div>
                     <div class="row portfolio container">

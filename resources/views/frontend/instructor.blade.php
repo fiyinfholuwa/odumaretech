@@ -22,15 +22,16 @@ Instructor
             <div class="contact">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="contact-info">
-                                
+                        <div class="col-md-6 col-lg-6" style="background-image: url('https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2020_05_software-development-i1.jpg'); background-size: cover;"  >
+                            <div   class="contact-info">
+                                <h3 style="padding: 20px 2px; color: #fff;">Join Our Team of Experts</h3>
+                                <p style="color:#fff;">Ignite Minds and Inspire Others. Become an Instructor with Us Today!</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="contact-form">
                                 <div id="success"></div>
-                                <form method="post" action="{{route('instructor.add')}}" enctype="multipart/form-data"> 
+                                <form method="post" action="{{route('instructor.add')}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="control-group">
                                         <input  type="text" class="form-control" name="first_name" id="firstname" placeholder="First Name" required="required" data-validation-required-message="Please enter your name" />
@@ -60,7 +61,7 @@ Instructor
                                             <option value="Beginner">Beginner</option>
                                             <option value="Intermidiate">Intermidiate</option>
                                             <option value="Professional">Professional</option>
-                                            
+
                                         </select>
                                         <p class="help-block text-danger"></p>
                                     </div>
@@ -84,7 +85,7 @@ Instructor
                                         <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
                                         <p class="help-block text-danger"></p>
                                     </div>
-                                    
+
                                     <div class="control-group">
                                         <span>Upload Your CV</span>
                                         <br>
@@ -96,7 +97,7 @@ Instructor
                                         <label for="file" style="font-size: 12px;  font-style: italic;">Subscribe to our mail list</label>
                                     </div>
 
-                                    
+
                                     <div>
                                         <button class="btn" type="submit" id="sendMessageButton">Send Message</button>
                                     </div>

@@ -15,7 +15,7 @@
                                 <label for="email2">Assignment Title</label>
                                 <input type="text" class="form-control" id="email2" value="{{$assignment->assignment_name->title}}" readonly required name="title" placeholder="Enter  Assignment Title">
                             </div>
-                            
+
 
                             @if($assignment->image != null)
                             <div class="form-group">
@@ -34,23 +34,23 @@
                             <div class="form-group">
                                 <label for="email2">Give  Assignment Review</label>
                                 <textarea required class="form-control" row="2" name="review" placeholder="Give Assignment Review">
-                                
+                                {{$assignment->review}}
                                 </textarea>
                             </div>
                             <div class="form-group">
                                 <label for="email2">Grade Assignment</label>
-                                <input type="number" max="100" class="form-control" id="email2" required name="score" placeholder="Enter  Assignment Score 0-100">
+                                <input type="number" value="{{$assignment->status_in}}" max="100" class="form-control" id="email2" required name="score" placeholder="Enter  Assignment Score 0-100">
                             </div>
-                           
+
                         <div class="card-action">
                             <button class="btn btn-primary">Review Assignment</button>
-                
+
                         </div>
                            </form>
                     </div>
-                    
+
                 </div>
-                
+
             </div>
 
 @endsection

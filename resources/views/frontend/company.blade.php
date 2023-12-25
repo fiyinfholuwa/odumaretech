@@ -1,93 +1,92 @@
 @extends('frontend.app')
 
 @section('title')
-Company Training
+    Company Training
 @endsection
 
 @section('content')
 
-<div class="page-header">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <h2>Corporate Training</h2>
-                        </div>
-                        <div class="col-12">
-                            <a href="{{route('home')}}">Home</a>
-                            <a href="#">Corporate Training</a>
-                        </div>
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Corporate Training</h2>
+                </div>
+                <div class="col-12">
+                    <a href="{{route('home')}}">Home</a>
+                    <a href="#">Corporate Training</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about page">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-6">
+                    <div class="about-img">
+                        <img
+                            src="https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2020_05_software-development-i1.jpg"
+                            alt="Image">
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-6">
+                    <div class="section-header text-left">
+                        <p>Empower Your Team for Success
+                        </p>
+                    </div>
+                    <div class="about-text">
+
+                        <p>
+                            Unlock the Potential of Corporate Training. Simply fill out the form to delve into advanced
+                            enterprise digital training. An Advisor will reach out to discuss your unique training needs
+                            and design a bespoke talent solution for your organization.
+
+                        </p>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Contact Start -->
-            <div class="contact">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="contact-info">
-                                
+    <!-- Blog Start -->
+    <div class="blog">
+        <div class="container">
+            <h3 style="color: #007bff; padding: 10px 0px" class="text-center">Latest Training</h3>
+            <div class="row">
+                @if(count($courses) > 0)
+                    @foreach($courses as $course)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="blog-item">
+                                <div class="blog-img">
+                                    <img src="{{asset($course->image)}}" alt="Image">
+                                </div>
+                                <div class="blog-title">
+                                    <h3>{{$course->title}}</h3>
+                                    <a class="btn" href="{{route('corporate.training.detail', $course->id)}}"> ></a>
+                                </div>
+                                <div class="blog-meta">
+                                    <p>By<a href="">Admin</a></p>
+                                </div>
+                                <div class="blog-text">
+                                    <p>
+                                        {{ Str::limit($course->description, 30) }}...
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="contact-form">
-                                <div id="success"></div>
-                                <form method="post" action="{{route('corporate.training.add')}}">
-									@csrf
-                                    <div class="control-group">
-                                        <input type="text" class="form-control" name="name" placeholder="Company Name" required="required" data-validation-required-message="Please enter the company name" />
-                                        <p class="help-block text-danger"></p>
-                                    </div>
+                    @endforeach
 
-                                    <div class="control-group">
-                                        <input type="text" class="form-control" name="email" placeholder="Company Email" required="required" data-validation-required-message="Please enter the company's email" />
-                                        <p class="help-block text-danger"></p>
-                                    </div>
-
-                                    <div class="control-group">
-                                        <input type="number" class="form-control" name="phone" placeholder="Company Phone Number" required="required" data-validation-required-message="Please enter the company's phone number" />
-                                        <p class="help-block text-danger"></p>
-                                    </div>
-
-                                    <div class="control-group">
-                                        <label for="gender">Level of Career</label> <br>
-                                        <select name="level">
-                                            <option value="Beginner">Beginner</option>
-                                            <option value="Intermediate">Intermediate</option>
-                                            <option value="Professional">Professional</option>
-                                        </select>
-                                        <p class="help-block text-danger"></p>
-                                    </div>
-									
-							<div class="control-group mb-2">
-								
-									<!-- <label>Intrested Course</label> -->
-									<input name="intrested_in" placeholder="Intrested Course" type="text" required="" class="form-control">
-								
-							</div>
-						
-
-
-                                    <div class="control-group">
-                                        <input type="text" name="location" class="form-control" id="location" placeholder="Location" required="required" data-validation-required-message="Please enter your current location" />
-                                        <p class="help-block text-danger"></p>
-                                    </div>
-                                    
-                                    <div class="control-group">
-                                        <input type="checkbox" name="checkbox" id="checkbox">
-                                        <label for="file">Subscribe to our mail list</label>
-                                    </div>
-                                    
-                                    <div>
-                                        <button class="btn" type="submit" id="sendMessageButton">Submit Quota</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                @else
+                    <div>
+                        <h5 class="text-danger text-center">No Corporate Training yet</h5>
                     </div>
-                </div>
-            </div>
-            <!-- Contact End -->
 
-	        
+                @endif
+            </div>
+            {{$courses->links('frontend.paginate')}}
+        </div>
+    </div>
+    <!-- Blog End -->
+
 @endsection

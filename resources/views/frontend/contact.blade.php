@@ -26,7 +26,7 @@ Contact Us
                         <h2>For Any Question</h2>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="background: url('https://www.carmeuse.com/sites/default/files/styles/facebook_share/public/2020-02/contact%20us.png?itok=xPq2DVbi'); background-repeat: no-repeat; background-size: cover;">
                             <div class="contact-info">
                                 <div class="contact-item">
                                     <i class="flaticon-call"></i>

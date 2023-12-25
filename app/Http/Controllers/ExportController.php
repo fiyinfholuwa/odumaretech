@@ -14,7 +14,7 @@ use Carbon\Carbon;
 
 class ExportController extends Controller
 {
-    
+
     public  function export_users(Request $request){
         ini_set('max_execution_time', 0);
         $dateFrom = Carbon::createFromFormat('Y-m-d', $request->date_from)->startOfDay();
@@ -33,7 +33,7 @@ class ExportController extends Controller
     }
 
 
-    
+
     public  function export_instructor(Request $request){
         ini_set('max_execution_time', 0);
         $dateFrom = Carbon::createFromFormat('Y-m-d', $request->date_from)->startOfDay();
@@ -52,7 +52,7 @@ class ExportController extends Controller
     }
 
 
-    
+
     public  function export_masterclass(Request $request){
         ini_set('max_execution_time', 0);
         $dateFrom = Carbon::createFromFormat('Y-m-d', $request->date_from)->startOfDay();
@@ -72,11 +72,11 @@ class ExportController extends Controller
         echo $excelContent;
         exit;
 
-        
+
     }
 
 
-   
+
     public  function export_company_training(Request $request){
         ini_set('max_execution_time', 0);
         $dateFrom = Carbon::createFromFormat('Y-m-d', $request->date_from)->startOfDay();
@@ -93,6 +93,24 @@ class ExportController extends Controller
         echo $excelContent;
         exit;
 
+    }
+
+    public function innovation_export(Request $request)
+    {
+        ini_set('max_execution_time', 0);
+        $dateFrom = Carbon::createFromFormat('Y-m-d', $request->date_from)->startOfDay();
+        $dateTo = Carbon::createFromFormat('Y-m-d', $request->date_to)->endOfDay();
+        $data = DB::table('innovation_applies')->whereBetween('created_at', [$dateFrom, $dateTo])->get();
+        $excelContent = "SN,Full Name,Email,  Topic, Gender,\n"; // Header row
+        $i=0;
+        foreach ($data as $item) {
+            $i++;
+            $excelContent .= $i . ','. $item->name . ',' . $item->email . ',' .$item->topic. ',' . $item->gender . "\n";
+        }
+        header("Content-type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=innovation_collaborator.csv");
+        echo $excelContent;
+        exit;
     }
 
 }

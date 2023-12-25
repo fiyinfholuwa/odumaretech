@@ -24,10 +24,10 @@ body {
 }
 
 h1,
-h2, 
-h3, 
+h2,
+h3,
 h4,
-h5, 
+h5,
 h6 {
     color: #fff;
 }
@@ -130,6 +130,10 @@ a:focus {
     margin-top: 10px;
 }
 
+
+.about page{
+    margin-top: -100px !important;
+}
 .top-bar .top-bar-icon {
     width: 40px;
     display: flex;
@@ -256,19 +260,19 @@ a:focus {
     .nav-bar {
         padding: 0 30px;
     }
- 
+
     .nav-bar.nav-sticky {
         padding: 0;
     }
-    
+
     .nav-bar .navbar {
         padding: 20px;
     }
-    
+
     .nav-bar .navbar-brand {
         display: none;
     }
-    
+
     .nav-bar a.nav-link {
         padding: 8px 15px;
         font-size: 15px;
@@ -298,15 +302,15 @@ a:focus {
         text-align: center !important; /* Optional, depending on the content */
     }
 
-    
+
     .nav-bar a.nav-link {
         padding: 26px;
     }
-    
+
     .nav-bar .dropdown-menu {
         box-shadow: none;
     }
-    
+
     .nav-bar .btn {
         display: none;
     }
@@ -418,11 +422,11 @@ a:focus {
         font-size: 40px;
         font-weight: 700;
     }
-    
+
     .carousel .carousel-caption p {
         font-size: 20px;
     }
-    
+
     .carousel .carousel-caption .btn {
         padding: 12px 30px;
         font-size: 18px;
@@ -436,11 +440,11 @@ a:focus {
         font-size: 30px;
         font-weight: 500;
     }
-    
+
     .carousel .carousel-caption p {
         font-size: 16px;
     }
-    
+
     .carousel .carousel-caption .btn {
         padding: 10px 25px;
         font-size: 16px;
@@ -515,11 +519,11 @@ a:focus {
     .page-header {
         padding: 60px 0;
     }
-    
+
     .page-header h2 {
         font-size: 45px;
     }
-    
+
     .page-header a {
         font-size: 20px;
     }
@@ -529,11 +533,11 @@ a:focus {
     .page-header {
         padding: 45px 0;
     }
-    
+
     .page-header h2 {
         font-size: 35px;
     }
-    
+
     .page-header a {
         font-size: 18px;
     }
@@ -581,7 +585,7 @@ a:focus {
 .feature .col-md-12 {
     background: #fff;
 }
-    
+
 .feature .col-md-12:nth-child(2n) {
     color: #fff;
     background: #041845;
@@ -913,6 +917,9 @@ a:focus {
     width: 100%;
 }
 
+
+
+
 .service .service-overlay {
     position: absolute;
     width: 100%;
@@ -1149,12 +1156,12 @@ a:focus {
     .faqs .row::after {
         display: none;
     }
-    
+
     .faqs #accordion-1,
     .faqs #accordion-2 {
         padding: 0;
     }
-    
+
     .faqs #accordion-2 {
         padding-top: 15px;
     }
@@ -1219,18 +1226,18 @@ a:focus {
     border-top: none;
 }
 
-.company { 
+.company {
     /* padding: 40px 5px; */
 }
 
 .company .row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .kompany {
-    /* flex: 0 0 50%; 
+    /* flex: 0 0 50%;
     max-width: 50%; */
     padding: 10px;
     text-align: center;
@@ -1257,8 +1264,8 @@ a:focus {
 .kompany img {
     max-width: 30%;
     /* height: auto; */
-    display: block; 
-    margin: 0 auto; 
+    display: block;
+    margin: 0 auto;
     padding: 2px;
     border: 2px solid #fff;
     border-radius: 20px;
@@ -1267,7 +1274,7 @@ a:focus {
 .section-header h2 {
     font-size: 24px;
     margin: 0;
-    text-align: center; 
+    text-align: center;
     color: #041845;
 }
 
@@ -1511,12 +1518,12 @@ a:focus {
 
 .basic-info li strong {
     display: inline-block;
-    width: 140px; 
+    width: 140px;
 }
 
 .basic-info li::before {
     content: "";
-    color: #2e5efc; 
+    color: #2e5efc;
     display: inline-block;
     margin-left: -15px;
     width: 10px;
@@ -1996,11 +2003,11 @@ a:focus {
 }
 
 .sidebar .category-widget ul li {
-    margin: 0 0 12px 22px; 
+    margin: 0 0 12px 22px;
 }
 
 .sidebar .category-widget ul li:last-child {
-    margin-bottom: 0; 
+    margin-bottom: 0;
 }
 
 .sidebar .category-widget ul li a {
@@ -2228,7 +2235,7 @@ a:focus {
     margin-bottom: 15px;
 }
 
-.contact-item2 i {   
+.contact-item2 i {
     font-size: 24px;
     margin-right: 15px;
     color: #fff;
@@ -2281,7 +2288,7 @@ a:focus {
 }
 
 .contact .col-md-6:first-child {
-    background: linear-gradient(rgba(3, 15, 39, .9), rgba(3, 15, 39, .9)), url(../img/img/pexels-fauxels-3183190.jpg);
+    background: linear-gradient(rgba(3, 15, 39, .6), rgba(3, 15, 39, .9));
     background-position: center;
     background-size: cover;
 }

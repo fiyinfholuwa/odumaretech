@@ -27,7 +27,7 @@ Home
                         <div class="carousel-caption">
                             <p class="animated fadeInRight">We are Professionals</p>
                             <h1 class="animated fadeInLeft">Our courses, Your path to a successful Tech Career</h1>
-                            <a class="btn animated fadeInUp" href="#">Download Brochure</a>
+                            <a class="btn animated fadeInUp" target="_blank" href="https://drive.google.com/drive/u/1/folders/1WgNvmtsufhAMMCrcFpoc4v9ovI-0f5Fl">Download Brochure</a>
                         </div>
                     </div>
 
@@ -37,7 +37,7 @@ Home
                         <div class="carousel-caption">
                             <p class="animated fadeInRight">We Are Experienced</p>
                             <h1 class="animated fadeInLeft">For an Expert Professional Training and Advice</h1>
-                            <a class="btn animated fadeInUp" href="{{route('corporate.training')}}">Book Consultation</a>
+                            <a target="_blank" href="https://calendar.app.google/DLQiWuuf7tEKY5Cv8" class="btn animated fadeInUp" href="{{route('corporate.training')}}">Book Consultation</a>
                         </div>
                     </div>
                 </div>
@@ -134,11 +134,11 @@ Home
                                 <span class="btn animated fadeInUp">Join Master Class</span>
 								@endif
                                 @endif
-                                    
+
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -243,14 +243,14 @@ Home
                     </button>
                 </div>
             </div>
-            
+
             <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
-                            </button>        
+                            </button>
                             <!-- 16:9 aspect ratio -->
                             <div class="embed-responsive embed-responsive-16by9">
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/C7wtCtwyIMg?si=6SOFS7lfz9sju8Lq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>                            </div>
@@ -320,7 +320,7 @@ Home
                 </div>
             </div>
 
-            
+
             <!-- Companies -->
             <div class="company container">
                 <div class="">
@@ -352,7 +352,7 @@ Home
 							@if(count($testimonials) > 0)
 							@foreach($testimonials as $test)
                                 <div class="slider-nav"><img src="{{asset($test->image)}}" alt="Testimonial"></div>
-                            
+
 							@endforeach
 							@else
 							<div><h3 class="text-white">No Testimonial yet</h3></div>

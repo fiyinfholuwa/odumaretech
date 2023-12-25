@@ -22,9 +22,9 @@ Contact Us
             <div class="contact ">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="background-image: url('https://cdn-icons-png.flaticon.com/512/295/295128.png'); background-size: cover;">
                             <div class="contact-info">
-                                
+
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -74,14 +74,14 @@ Contact Us
                                     <div class="control-group">
                                         <input type="password" class="form-control" name="password_confirmation" placeholder="Retype Password"  data-validation-required-message="Please enter your password" />
                                         <p class="help-block text-danger"></p>
-                                        
+
                                     </div>
-                                    
+
                                     <div class="control-group">
                                         <input required type="checkbox" name="checkbox" id="checkbox">
                                         <label for="file">Subscribe to our mail list</label>
                                     </div>
-                                    
+
                                     <div>
                                         <button class="btn" type="submit" id="sendMessageButton">Register</button>
                                     </div>

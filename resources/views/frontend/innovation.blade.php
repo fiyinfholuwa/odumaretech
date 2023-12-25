@@ -20,6 +20,31 @@ Research and Innovation
                 </div>
             </div>
 
+
+                <div class="about page">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-6">
+                    <div class="about-img">
+                        <img src="https://ood-jrshittu.vercel.app/img/img/pexels-cottonbro-studio-6804073.jpg" alt="Image">
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-6">
+                    <div class="section-header text-left">
+                        <p>Exploring Tomorrow's Innovations
+                        </p>
+                    </div>
+                    <div class="about-text">
+
+                        <p>
+                            Dive into our cutting-edge research at OdumareTech. Curiosity knows no bounds, and neither do we. Are you passionate about shaping the future? Join us in our pursuit of knowledge. Express your interest by filling out the form, or explore our ongoing and completed research projects.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 				<div class="portfolio">
                 <div class="container">
                     <div class="section-header text-center">
@@ -43,14 +68,13 @@ Research and Innovation
                                 <div class="portfolio-img">
                                     <img src="{{asset($innovation->image)}}" alt="Image">
                                     <div class="portfolio-overlay">
-                                        <p>
-										<a style="text-decoration:none;" target="_blank" href="{{$innovation->github}}" class="btn-link btn btn-danger">Github Link <i class="fab fa-github"></i></a>
+                                        <p>{{ Str::limit($innovation->description, 40) }}
                                         </p>
                                     </div>
                                 </div>
                                 <div class="portfolio-text">
                                     <h3>{{$innovation->name}}</h3>
-                                    <a class="btn" href="{{$innovation->link}}"  ><i class="fa fa-globe"></i></a>
+                                    <a class="btn" href="{{route('innovation.detail', $innovation->id)}}"  > > </a>
                                 </div>
                             </div>
                         </div>
@@ -62,10 +86,10 @@ Research and Innovation
 						</div>
 
 						@endif
-                        
+
                     </div>
                     {{$innovations->links('frontend.paginate')}}
                 </div>
             </div>
-            
+
 @endsection

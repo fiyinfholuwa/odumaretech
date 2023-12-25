@@ -53,6 +53,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/admin/testimonial/edit/{id}', 'testimonial_edit')->name('testimonial.edit');
     Route::post('/admin/testimonial/update/{id}', 'testimonial_update')->name('testimonial.update');
     Route::get('/company/training', 'company_view')->name('corporate.training');
+    Route::get('/company/training/detail/{id}', 'company_view_detail')->name('corporate.training.detail');
     Route::post('/company/training/add', 'company_add')->name('corporate.training.add');
     Route::get('/company/training/all', 'company_all')->name('company.all');
     Route::get('/instructor', 'instructor_view')->name('instructor');
@@ -163,15 +164,17 @@ Route::controller(MasterClassController::class)->group(function () {
 
 Route::controller(PaymentController::class)->group(function () {
     Route::post('/pay', 'makePayment')->name('pay');
-    Route::get('/payment/callback', 'paymentCallback')->name('pay.callback');
-    // Route::get('/contact', 'contact')->name('contact');
-    // Route::post('/contact/save', 'contact_save')->name('contact.save');
+    Route::get('/payment/callback/paystack', 'paymentCallbackPaystack')->name('pay.callback.paystack');
+    Route::get('/payment/callback/stripe/success', 'paymentcallbackstripesuccess')->name('pay.callback.stripe.success');
+    Route::get('/payment/callback/stripe/cancel', 'paymentCallbackStripeFailed')->name('pay.callback.stripe.failed');
+
+    Route::get('/payment/callback/stripe/success/complete', 'user_complete_callback_stripe_complete')->name('pay.callback.stripe.success.complete');
+
     Route::get('/admin/transactions/all', 'transactions')->name('transaction.all');
     Route::get('/user/transactions/all', 'transactions_user')->name('transaction.user.all');
     Route::post('/payment/conplete/{id}', 'user_complete')->name('user.complete.payment');
     Route::post('/payment/resolution/{id}', 'payment_resolution')->name('payment.resolution');
     Route::get('/payment/callback/user', 'user_complete_callback')->name('pay.callback.user.complete');
-    // Route::post('/admin/contact/delete/{id}', 'message_delete')->name('contact.delete');
 });
 
 Route::controller(AboutController::class)->group(function () {
@@ -180,6 +183,10 @@ Route::controller(AboutController::class)->group(function () {
 
 Route::controller(InnovationController::class)->group(function () {
     Route::get('/innovation', 'innovation')->name('innovation');
+    Route::get('/innovation/detail/{id}', 'innovation_detail')->name('innovation.detail');
+    Route::post('/innovation/add/', 'innovation_add')->name('innovation.apply');
+    Route::get('/innovation/apply/view', 'innovation_apply_view')->name('innovation.apply.view');
+    Route::post('/innovation/delete/{id}', 'innovation_delete')->name('inno.delete');
     Route::get('/blog', 'blog')->name('blog');
 });
 
@@ -194,7 +201,8 @@ Route::controller(ExportController::class)->group(function () {
     Route::post('/export/users', 'export_users')->name('users.export');
     Route::post('/export/instructors', 'export_instructor')->name('instructors.export');
     Route::post('/export/masterclass', 'export_masterclass')->name('masterclass.export');
-    Route::post('/export/company/training', 'export_company_training')->name('company.export'); 
+    Route::post('/export/company/training', 'export_company_training')->name('company.export');
+    Route::post('/export/innovation/application', 'innovation_export')->name('innovation.export');
 });
 
 Route::middleware('auth')->group(function () {

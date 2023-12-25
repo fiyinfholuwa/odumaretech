@@ -19,7 +19,7 @@
                         {{$message}}
                         @enderror
                         </small>
-                        
+
                     </div>
                     <div class="form-group">
                         <label for="email2">Innovation Github Link</label>
@@ -29,9 +29,37 @@
                         {{$message}}
                         @enderror
                         </small>
-                        
+
                     </div>
-                    <div class="form-group">
+
+                        <div class="form-group">
+                            <label for="email2">Description (optional)</label>
+                            <textarea type="text" class="form-control" id="email2" name="description" placeholder="Enter Innovation Description"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email2">Requirement (optional)</label>
+                            <textarea type="text" class="form-control" id="email2" name="requirement" placeholder="Enter Innovation Requirement"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email2">Start Date (optional)</label>
+                            <input type="date" class="form-control" id="email2" name="start_date">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email2">End Date (optional)</label>
+                            <input type="date" class="form-control" id="email2" name="end_date">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="email2">Durations in week (optional)</label>
+                            <input type="number" class="form-control" id="email2" name="duration">
+                        </div>
+
+
+                        <div class="form-group">
                         <label for="email2">Innovation Status</label>
                         <select class="form-control" name="status" required>
                             <option value="">Select Innovation Status</option>
@@ -39,39 +67,39 @@
                             <option value="Running">Running</option>
                             <option value="Upcoming">Upcoming</option>
                         </select>
-                        
+
                         </small>
-                        
+
                     </div>
                     <div class="form-group">
                         <label for="email2">Innovation Website Link</label>
                         <input type="text" class="form-control" id="email2" required name="link" placeholder="Enter Innovation Link">
                         <small style="color:red; font-weight:500">
-                        
+
                         </small>
-                        
+
                     </div>
 
                     <div class="form-group">
                         <label for="email2">Innovation Image</label>
                         <input type="file" class="form-control" id="email2" accept="image/*" required name="image" >
                         <small style="color:red; font-weight:500">
-                        
-                    
+
+
                         </small>
-                        
+
                     </div>
-                
+
                 </div>
                 <div class="card-action">
                     <button class="btn btn-primary">Add Innovation</button>
-        
+
                 </div>
                     </form>
             </div>
-            
+
         </div>
-        
+
     </div>
 
 @endsection

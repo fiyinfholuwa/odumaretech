@@ -19,7 +19,7 @@
                         {{$message}}
                         @enderror
                         </small>
-                        
+
                     </div>
                     <div class="form-group">
                         <label for="email2">Innovation Github Link</label>
@@ -29,10 +29,38 @@
                         {{$message}}
                         @enderror
                         </small>
-                        
+
                     </div>
 
-                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="email2">Description (optional)</label>
+                            <textarea type="text" class="form-control" id="email2"  name="description" placeholder="Enter Innovation Description">{{$innovation->description}}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email2">Requirement (optional)</label>
+                            <textarea type="text" class="form-control" id="email2"   name="requirement" placeholder="Enter Innovation Requirement">{{$innovation->requirement}}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email2">Start Date (optional)</label>
+                            <input type="date" class="form-control" value="{{$innovation->start_date}}" id="email2" name="start_date">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email2">End Date (optional)</label>
+                            <input type="date" class="form-control" value="{{$innovation->end_date}}" id="email2" name="end_date">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="email2">Durations in week (optional)</label>
+                            <input type="number" value="{{$innovation->duration}}" class="form-control" id="email2" name="duration">
+                        </div>
+
+
+
+                        <div class="form-group">
                         <label for="email2">Innovation Status</label>
                         <select class="form-control" name="status" required>
                             <option value="" >Select Innovation Status</option>
@@ -40,9 +68,9 @@
                             <option value="Running" {{$innovation->status == "Running" ? "selected" : ""}}>Running</option>
                             <option value="Upcoming" {{$innovation->status == "Upcoming" ? "selected" : ""}}>Upcoming</option>
                         </select>
-                        
+
                         </small>
-                        
+
                     </div>
 
 
@@ -50,9 +78,9 @@
                         <label for="email2">Innovation Website Link</label>
                         <input type="text" class="form-control" id="email2" value="{{$innovation->link}}" required name="link" placeholder="Enter Innovation Link">
                         <small style="color:red; font-weight:500">
-                        
+
                         </small>
-                        
+
                     </div>
 
                     <div class="form-group">
@@ -60,23 +88,23 @@
                         <input type="file" class="form-control" id="email2" accept="image/*" name="image" >
                         <small style="color:red; font-weight:500">
                         <img height="60" width="60" src="{{asset($innovation->image)}}" />
-                    
+
                         </small>
-                        
+
                     </div>
 
 
-                
+
                 </div>
                 <div class="card-action">
                     <button class="btn btn-primary">Update Innovation</button>
-        
+
                 </div>
                     </form>
             </div>
-            
+
         </div>
-        
+
     </div>
 
 @endsection
