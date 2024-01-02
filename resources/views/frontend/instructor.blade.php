@@ -11,25 +11,26 @@ Instructor
                             <h2>Join Our Team</h2>
                         </div>
                         <div class="col-12">
-                            <a href="{{route('home')}}">Home</a>
-                            <a href="#">Become an Instructor</a>
+                            <a style="color: #fff;" href="{{route('home')}}">Home</a>
+                            <a style="color: #fff;" href="#">Become an Instructor</a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Contact Start -->
-            <div class="contact">
+            <div style="margin-top: -30px" class="contact">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6 col-lg-6" style="background-image: url('https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2020_05_software-development-i1.jpg'); background-size: cover;"  >
+                        <div id="image_top" class="col-md-6 col-lg-6" style="background-image: url('https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2020_05_software-development-i1.jpg'); background-size: cover;"  >
                             <div   class="contact-info">
-                                <h3 style="padding: 20px 2px; color: #fff;">Join Our Team of Experts</h3>
-                                <p style="color:#fff;">Ignite Minds and Inspire Others. Become an Instructor with Us Today!</p>
+
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="contact-form">
+                                <h3 style="padding: 20px 2px; color:navy">Join Our Team of Experts</h3>
+                                <p style="color:navy;">Ignite Minds and Inspire Others. Become an Instructor with Us Today!</p>
                                 <div id="success"></div>
                                 <form method="post" action="{{route('instructor.add')}}" enctype="multipart/form-data">
                                     @csrf
@@ -108,6 +109,13 @@ Instructor
                 </div>
             </div>
             <!-- Contact End -->
-
+    <style>
+        @media (max-width: 425px){
+            #image_top{
+                height: 300px;
+                margin-top: -50px;
+            }
+        }
+    </style>
 
 @endsection

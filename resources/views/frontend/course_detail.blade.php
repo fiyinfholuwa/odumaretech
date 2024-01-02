@@ -17,11 +17,11 @@
             </div>
 
             <!-- Single Course Start-->
-            <div class="single">
+            <div style="margin-top: -100px;" class="single">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8">
-                            <div class="single-content wow fadeInUp">
+                            <div class="single-content">
                                 <img src="{{asset($course->image)}}" />
                                 <div class="sidebar-widget wow fadeInUp">
                                     <h2 class="widget-title">Course Breakdown</h2>
@@ -46,22 +46,25 @@
 
                                 <h2>Course Description</h2>
                                 <p>
-                                    {{$course->description}}
+                                    {!! nl2br(e($course->description)) !!}
+
                                 </p>
 
                                 <h2>Certification</h2>
                                 <p>
-                                    {{$course->certification}}
+                                    {!! nl2br(e($course->certification)) !!}
+
                                 </p>
 
                                 <h2>Support</h2>
                                 <p>
-                                    {{$course->support}}
+                                    {!! nl2br(e($course->support)) !!}
+
                                 </p>
 
                                 <h2>Experience</h2>
                                 <p>
-                                    {{$course->experience}}
+                                    {!! nl2br(e($course->experience)) !!}
                                 </p>
 
                             </div>
@@ -99,19 +102,20 @@
                                             <div>
                                             <form action="{{route('pay')}}" method="post">
 										@csrf
-									<h4>Choose Payment Gateway</h4>
-									<label>Local</label>
-									<input type="radio" value="paystack" name="payment" required/> </br>
-                                                <label>International</label>
-									<input type="radio"  value="stripe" name="payment"/> </br>
-
-
-									<h4>Payment Type</h4>
-									<label>Full Payment </br> (Enjoy Discount and Coupon)</label>
-									<input type="radio" value="full" name="payment_type" required/> </br>
-									<label>Installment (40% of the Actual Cost, then pay remaining later.)</label>
-									<input type="radio"  value="first installment" name="payment_type"/> </br>
-
+									<h4></h4>
+									<label>Choose Payment Gateway</label>
+                                    <select name="payment" required class="form-control">
+                                        <option value="" >Select Payment option</option>
+                                        <option value="paystack" >Local</option>
+                                        <option value="stripe" >International</option>
+                                    </select>
+                                    <br>
+									<label>Choose Payment Type</label>
+                                    <select name="payment_type" class="form-control" required>
+                                        <option value="">Select payment type</option>
+                                        <option value="full">Full Payment</option>
+                                        <option value="first installment">Installment 40% of the Actual Cost</option>
+                                    </select>
 
 									<input type="hidden" name="course_id" value="{{$course->id}}"/>
 									<input type="hidden" name="cohort_id" value="{{$cohort_name != NULL ? $cohort_name->id : 1 }}"/>

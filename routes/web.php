@@ -86,6 +86,11 @@ Route::controller(HomeController::class)->group(function () {
 
     Route::get('/admin/applied/user/view', 'applied_view')->name('applied.view');
     Route::post('/admin/applied/user/update/{id}', 'applied_users_update')->name('applied.user.update');
+    Route::post('/admin/dollar/save/', 'dollar_save')->name('dollar.save');
+    Route::get('/admin/platform/configure', 'platform_configure')->name('platform.configure');
+    Route::post('/admin/platform/message/delete', 'platform_message_delete')->name('platform.message.delete');
+    Route::post('/admin/platform/corporate/delete', 'platform_corporate_delete')->name('platform.corporate.delete');
+    Route::post('/admin/platform/masterclass/delete', 'platform_masterclass_delete')->name('platform.masterclass.delete');
     // Route::post('/admin/blog/add', 'blog_add')->name('blog.add');
 });
 
@@ -294,6 +299,21 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/user/download/certificate/{id}', 'download_certificate')->name('download.certificate');
 });
 
+});
+
+
+Route::get('/refresh-migration', function () {
+    \Artisan::call('migrate:refresh');
+    return 'Migration Refreshed!';
+});
+
+Route::get('/create-storage-link', function () {
+    try {
+        Artisan::call('storage:link');
+        return 'Storage link created!';
+    } catch (\Exception $e) {
+        return 'Error creating storage link: ' . $e->getMessage();
+    }
 });
 
 require __DIR__.'/auth.php';

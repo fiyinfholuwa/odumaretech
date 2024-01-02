@@ -101,7 +101,7 @@ class ExportController extends Controller
         $dateFrom = Carbon::createFromFormat('Y-m-d', $request->date_from)->startOfDay();
         $dateTo = Carbon::createFromFormat('Y-m-d', $request->date_to)->endOfDay();
         $data = DB::table('innovation_applies')->whereBetween('created_at', [$dateFrom, $dateTo])->get();
-        $excelContent = "SN,Full Name,Email,  Topic, Gender,\n"; // Header row
+        $excelContent = "SN,Full Name,Email,  Topic, Github Link,\n"; // Header row
         $i=0;
         foreach ($data as $item) {
             $i++;

@@ -19,7 +19,7 @@
                                 {{$message}}
                                 @enderror
                                 </small>
-                               
+
                             </div>
                             <div class="form-group">
                                 <select class="form-control" name="category" id="validationCustom02"  required>
@@ -43,7 +43,18 @@
                                 </small>
                             </div>
 
-                            <div class="form-group">
+                               <div class="form-group">
+                                   <label for="email2">Description Corporate</label>
+                                   <textarea rows="5" type="text" class="form-control" id="email2" required name="description_corp" placeholder="Enter Course Description Corporate"></textarea>
+                                   <small style="color:red; font-weight:500">
+                                       @error('description')
+                                       {{$message}}
+                                       @enderror
+                                   </small>
+                               </div>
+
+
+                               <div class="form-group">
                                 <label for="email2">Certification</label>
                                 <textarea rows="5" type="text" class="form-control" id="email2" required name="certification" placeholder="Enter Course Certification"></textarea>
                                 <small style="color:red; font-weight:500">
@@ -71,7 +82,7 @@
                                 {{$message}}
                                 @enderror
                                 </small>
-                               
+
                             </div>
 
                             <div class="row">
@@ -99,10 +110,27 @@
                                         <input class="form-control" type="text" name="language"  placeholder="Course Language"/>
                                     </div>
                                 </div>
-                            
+
                             </div>
 
-                        
+
+                               <div class="row">
+
+                                   <div class="col-lg-6">
+                                       <div class="form-group">
+                                           <label for="email2">Corporate Course Display</label>
+                                           <input class="form-control" type="checkbox" name="corporate_display" value="yes"/>
+                                       </div>
+                                   </div>
+                                   <div class="col-lg-4">
+                                       <div class="form-group">
+                                           <label for="email2">Normal Course Display</label>
+                                           <input class="form-control" type="checkbox" name="normal_display" value="yes"/>
+                                       </div>
+                                   </div>
+
+                               </div>
+
                             <div class="row">
                                 <div class="col-lg-6">
                                 <div class="form-group">
@@ -121,14 +149,14 @@
 
                             </div>
 
-                                
+
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                     <label for="email2">Course Start Date</label>
                                         <input class="form-control" type="date" name="start_date" required  placeholder="Course Start Date"/>
                                     </div>
                                 </div>
-                            
+
                             </div>
 
 
@@ -152,7 +180,7 @@
                                         <input class="form-control" type="text" name="lecture"  placeholder="Course Lecture Time"/>
                                     </div>
                                 </div>
-                            
+
                             </div>
 
 
@@ -164,19 +192,19 @@
                                 {{$message}}
                                 @enderror
                                 </small>
-                               
+
                             </div>
-                        
+
                         </div>
                         <div class="card-action">
                             <button class="btn btn-primary">Add Course</button>
-                
+
                         </div>
                            </form>
                     </div>
-                    
+
                 </div>
-                
+
             </div>
 
 @endsection

@@ -11,19 +11,19 @@ Login
                             <h2>Login</h2>
                         </div>
                         <div class="col-12">
-                            <a href="{{route('home')}}">Home</a>
-                            <a href="#">Login</a>
+                            <a style="color: #fff;" href="{{route('home')}}">Home</a>
+                            <a style="color:#fff;" href="#">Login</a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Contact Start -->
-            <div class="contact wow fadeInUp">
+            <div style="margin-top: -50px;" class="contact">
                 <div class="container">
                     <div class="section-header text-center">
                         <p>Don't have an account?
-                            <a href="{{route('register')}}">Create on here</a>
+                            <a href="{{route('register')}}">Create one here</a>
                         </p>
                     </div>
                     <div class="row">

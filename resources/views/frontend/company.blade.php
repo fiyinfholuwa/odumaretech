@@ -13,14 +13,14 @@
                     <h2>Corporate Training</h2>
                 </div>
                 <div class="col-12">
-                    <a href="{{route('home')}}">Home</a>
-                    <a href="#">Corporate Training</a>
+                    <a style="color: #fff;" href="{{route('home')}}">Home</a>
+                    <a style="color: #fff;" href="#">Corporate Training</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="about page">
+    <div style="margin-top: -100px;" class="about page">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 col-md-6">
@@ -50,7 +50,7 @@
     </div>
 
     <!-- Blog Start -->
-    <div class="blog">
+    <div style="margin-top: -100px;" class="blog course_movement">
         <div class="container">
             <h3 style="color: #007bff; padding: 10px 0px" class="text-center">Latest Training</h3>
             <div class="row">
@@ -88,5 +88,20 @@
         </div>
     </div>
     <!-- Blog End -->
+
+    <style>
+        @media (max-width: 425px) {
+
+            .course_movement {
+                margin-top: -250px !important;
+                margin-bottom: 0px;
+            }
+        }
+
+        @media (max-width: 375px) {
+
+
+        }
+    </style>
 
 @endsection

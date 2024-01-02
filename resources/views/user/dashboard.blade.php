@@ -4,7 +4,7 @@
                 <div class="page-inner">
 					<div class="page-header">
 						<h4 class="page-title">Welcome <span class="text-danger">{{Auth::user()->first_name}}</span> <span class="text-info">{{Auth::user()->last_name}}</span></h4>
-						
+
 					</div>
 					<div class="row">
 						<div class="col-sm-6 col-md-4">
@@ -66,8 +66,8 @@
 								</div>
 							</div>
 						</div>
-						
-						
+
+
 					</div>
 					<div class="row">
 						<div class="col-sm-6 col-md-4">
@@ -101,7 +101,7 @@
 										<div class="col col-stats ml-3 ml-sm-0">
 											<div class="numbers">
 												<p class="card-category"> All Assignments</p>
-												<h4 class="card-title">{{$assignment}}</h4>
+												<h4 class="card-title">{{$assignments}}</h4>
 											</div>
 										</div>
 									</div>
@@ -128,11 +128,6 @@
 								</div>
 							</div>
 						</div>
-						
-						
 					</div>
-					
-					
-				
 				</div>
 @endsection

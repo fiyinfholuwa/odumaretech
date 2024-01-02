@@ -13,15 +13,15 @@ Research and Innovation
                             <h2>Innovation</h2>
                         </div>
                         <div class="col-12">
-                            <a href="{{route('home')}}">Home</a>
-                            <a href="#!">Innovation</a>
+                            <a style="color: #fff;" href="{{route('home')}}">Home</a>
+                            <a style="color: #fff;" href="#!">Innovation</a>
                         </div>
                     </div>
                 </div>
             </div>
 
 
-                <div class="about page">
+                <div style="margin-top: -100px;" class="about page">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 col-md-6">
@@ -45,7 +45,7 @@ Research and Innovation
             </div>
         </div>
     </div>
-				<div class="portfolio">
+				<div style="margin-top: -100px;" class="portfolio">
                 <div class="container">
                     <div class="section-header text-center">
                         <!-- <h2>Check Projects</h2> -->

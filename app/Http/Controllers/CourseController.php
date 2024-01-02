@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\File;
 class CourseController extends Controller
 {
     public function all_course(){
-        $courses  = Course::paginate(6);
+        $courses  = Course::where('normal_display', '=', 'yes')->paginate(6);
         $categories = Category::all();
         return view('frontend.course', compact('courses','categories'));
     }
@@ -45,7 +45,7 @@ class CourseController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
-    
+
         $cohort = new Cohort;
         $cohort->name = $request->name;
         $cohort->save();
@@ -57,7 +57,7 @@ class CourseController extends Controller
     }
 
     public function cohort_m_add(Request $request){
-        
+
         $cohort_c = new CohortCourse;
         $check_if_exist = CohortCourse::where('course_id', '=', $request->course_id)->where('cohort_id', '=', $request->cohort_id)->first();
         if($check_if_exist){
@@ -65,7 +65,7 @@ class CourseController extends Controller
                 'message' => 'Cohort And Course Setup already exist',
                 'alert-type' => 'error'
             );
-            return redirect()->back()->with($notification); 
+            return redirect()->back()->with($notification);
         }
         $cohort_c->price = $request->price;
         $cohort_c->course_id = $request->course_id;
@@ -104,7 +104,7 @@ class CourseController extends Controller
             'message' => 'Category Successfully Deleted',
             'alert-type' => 'success'
         );
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
     }
 
     public function cohort_delete($id){
@@ -113,7 +113,7 @@ class CourseController extends Controller
             'message' => 'Cohort Successfully Deleted',
             'alert-type' => 'success'
         );
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
     }
 
 
@@ -123,7 +123,7 @@ class CourseController extends Controller
             'message' => 'Cohort Course Successfully Deleted',
             'alert-type' => 'success'
         );
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
     }
 
 
@@ -149,7 +149,7 @@ class CourseController extends Controller
         return view('admin.cohort_edit_m', compact('cohort', 'cohorts', 'courses', 'cohort_courses'));
     }
 
-    
+
 
     public function category_update(Request $request, $id){
         $category_update = Category::findOrFail($id);
@@ -186,7 +186,7 @@ class CourseController extends Controller
                 'message' => 'Cohort And Course Setup already exist',
                 'alert-type' => 'error'
             );
-            return redirect()->back()->with($notification); 
+            return redirect()->back()->with($notification);
         }
         $cohort_c->price = $request->price;
         $cohort_c->course_id = $request->course_id;
@@ -206,7 +206,7 @@ class CourseController extends Controller
     }
 
     public function course_add(Request $request){
-        
+
         $url_slug = strtolower($request->title);
         $label_slug= preg_replace('/\s+/', '-', $url_slug);
 
@@ -229,9 +229,12 @@ class CourseController extends Controller
         $new_course->cohort = $request->cohort;
         $new_course->category = $request->category;
         $new_course->support = $request->support;
+        $new_course->normal_display = $request->normal_display;
+        $new_course->corporate_display = $request->corporate_display;
         $new_course->experience = $request->experience;
         $new_course->certification = $request->certification;
         $new_course->description = $request->description;
+        $new_course->description_corp = $request->description_corp;
         $new_course->image = $path;
         $new_course->save();
         $notification = array(
@@ -255,7 +258,7 @@ class CourseController extends Controller
             'message' => 'Course Successfully Deleted',
             'alert-type' => 'success'
         );
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
     }
 
     public function course_edit($id){
@@ -290,14 +293,17 @@ class CourseController extends Controller
         $update_course->duration = $request->duration;
         $update_course->start_date = $request->start_date;
         $update_course->cohort = $request->cohort;
+        $update_course->normal_display = $request->normal_display;
+        $update_course->corporate_display = $request->corporate_display;
         $update_course->category = $request->category;
         $update_course->support = $request->support;
         $update_course->experience = $request->experience;
         $update_course->certification = $request->certification;
         $update_course->description = $request->description;
+        $update_course->description_corp = $request->description_corp;
         $update_course->image = $path;
         $update_course->save();
-        
+
         $notification = array(
             'message' => 'Course successfully updated',
             'alert-type' => 'success'
@@ -306,7 +312,7 @@ class CourseController extends Controller
     }
 
     public function course_detail($name){
-        
+
         $course = Course::where('course_url', $name)->get()->first();
         if(Auth::check()){
             $check_user_has_coupon = CouponUsed::where('user_id', '=', Auth::user()->id)->where('course_id','=', $course->id)->first();
@@ -318,7 +324,7 @@ class CourseController extends Controller
         }
         $cohort_name = Cohort::where('id', $course->cohort)->first();
         $coupon_check = Coupon::where('course_id', '=', $course->id)->first();
-       
+
         return view('frontend.course_detail', compact('course', 'coupon_check','check_user_has_coupon', 'has_pending', 'cohort_name' ));
     }
 
@@ -350,7 +356,7 @@ class CourseController extends Controller
     }
 
     public function coupon_add(Request $request){
-      
+
         $coupon = new Coupon;
         $coupon->code = $request->code;
         $coupon->course_id = $request->course_id;
@@ -371,7 +377,7 @@ class CourseController extends Controller
             'message' => 'Coupon Successfully Deleted',
             'alert-type' => 'success'
         );
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
     }
 
     public function coupon_edit($id){
@@ -381,7 +387,7 @@ class CourseController extends Controller
         return view('admin.coupon_edit', compact('coupons', 'courses', 'coupon'));
     }
 
-    
+
 
     public function coupon_update(Request $request, $id){
         $coupon = Coupon::findOrFail($id);
@@ -417,7 +423,7 @@ class CourseController extends Controller
                 'alert-type' => 'success'
             );
             return redirect()->back()->with($notification);
-            
+
         }elseif($get_all_coupon_number >= $get_coupon->number){
             $notification = array(
                 'message' => 'Coupon Limit reached',

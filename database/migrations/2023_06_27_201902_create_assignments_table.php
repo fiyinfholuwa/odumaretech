@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
             $table->string('course_id', 10)->nullable();
-            $table->string('cohort_id', 10)->nullable();
+            $table->string('cohort_id', 255)->nullable();
             $table->text('title')->nullable();
             $table->text('image')->nullable();
             $table->string('status', 10)->default('pending');

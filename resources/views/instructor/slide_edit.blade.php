@@ -19,7 +19,7 @@
                                 {{$message}}
                                 @enderror
                                 </small>
-                               
+
                             </div>
                             <div class="form-group">
                             <label for="email2">Slide Category</label>
@@ -31,22 +31,21 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
-                                <label for="email2">Cohort Category</label>
-                                <select class="form-control" name="cohort_id" id="validationCustom02"  required>
-                                <option disabled selected >Select Cohort Category</option>
-                                @if(count($cohorts) > 0)
-                                @foreach($cohorts as $cohort)
-                                <option value="{{$cohort->id}}" {{$cohort->id== $slide->cohort_id ? "selected" : ""}}>{{$cohort->name}}</option>
-                                @endforeach
-                                @else
-                                <option disabled>No Cohort</option>
-                                @endif
-                                </select>
-                            </div>
+                               <div class="form-group">
+                                   <label for="email2">Cohort visibility</label>
+                                   <div class="row">
+                                       @foreach($cohorts as $cohort)
+                                           <div class="col-lg-2">
+                                               <label>{{$cohort->name}}</label>
+                                               <input type="checkbox" name="cohort_id[]" value="{{$cohort->id}}"
+                                                      @if(in_array($cohort->id, $slide->cohort_id)) checked @endif>
+                                           </div>
+                                       @endforeach
+                                   </div>
+                               </div>
 
 
-                            <div>
+                               <div>
                             <label for="email2">Slide Status</label>
                                 <select class="form-control" name="status" id="validationCustom02"  required>
                                 <option disabled selected >Select Slide Status</option>
@@ -59,7 +58,7 @@
                                 <option value="active" >Publish</option>
                                 </select>
                             </div>
-                            
+
 
                             <div class="form-group">
                                 <label for="email2">Slide Attachement</label>
@@ -70,18 +69,18 @@
                                 {{$message}}
                                 @enderror
                                 </small>
-                               
+
                             </div>
-                        
+
                         <div class="card-action">
                             <button class="btn btn-primary">Update Slide</button>
-                
+
                         </div>
                            </form>
                     </div>
-                    
+
                 </div>
-                
+
             </div>
 
 @endsection

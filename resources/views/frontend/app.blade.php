@@ -41,7 +41,7 @@
             <div class="nav-bar">
                 <div class="">
                     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-                        <a href="index.html" class="navbar-brand">
+                        <a href="{{route('home')}}" class="navbar-brand">
                             <div class="logo small-logo">
                                 <img src="{{asset('frontend/img/img/logo.png')}}" alt="Logo">
                             </div>
@@ -127,11 +127,12 @@
              <div class="footer">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6 col-lg-3">
+                        <div class="col-md-6 col-lg-4">
                             <div class="footer-contact">
                                 <h2>Contact</h2>
-                                <p><i class="fa fa-phone-alt"></i>+447784927399</p>
-                                <p><i class="fa fa-envelope"></i>contact@dumaretech.com</p>
+                                <p style="color: #fff !important;"><i class="fa fa-phone-alt"></i> <span style="color: #fff !important;">+447784927399</span></p>
+                                <p style="color: #fff !important;"><i class="fa fa-envelope"></i> <span style="color: #fff !important;">contact@odumaretech.com</span></p>
+
                                 <div class="footer-social">
                                     <!-- <a href=""><i class="fab fa-twitter"></i></a> -->
                                     <a href="https://www.facebook.com/profile.php?id=100094441748614"><i class="fab fa-facebook-f"></i></a>
@@ -141,7 +142,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3">
+                        <div class="col-md-6 col-lg-4">
                             <div class="footer-link">
                                 <h2>Our Services</h2>
                                 <a href="{{route('corporate.training')}}">Corporate Training</a>
@@ -150,7 +151,7 @@
                                 <a href="{{route('masterclass')}}">Free Masterclass</a>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3">
+                        <div class="col-md-6 col-lg-4">
                             <div class="footer-link">
                                 <h2>Pages</h2>
                                 <a href="{{route('course')}}">Our Courses</a>
@@ -160,18 +161,18 @@
                                 <a href="{{route('faq')}}">FAQs</a>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="newsletter">
-                                <h2>Newsletter</h2>
-                                <p>
-                                    <!-- Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu -->
-                                </p>
-                                <div class="form">
-                                    <input class="form-control" placeholder="Email here">
-                                    <button class="btn">Submit</button>
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="col-md-6 col-lg-3">--}}
+{{--                            <div class="newsletter">--}}
+{{--                                <h2>Newsletter</h2>--}}
+{{--                                <p>--}}
+{{--                                    <!-- Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu -->--}}
+{{--                                </p>--}}
+{{--                                <div class="form">--}}
+{{--                                    <input class="form-control" placeholder="Email here">--}}
+{{--                                    <button class="btn">Submit</button>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 <div class=" footer-menu">
@@ -179,14 +180,14 @@
                         <a href="{{route('terms')}}">Terms of use</a>
                         <a href="{{route('privacy')}}">Privacy policy</a>
                         <a href="{{route('policy')}}">Refund Policy</a>
-                        <a href="#!">Help</a>
+{{--                        <a href="#!">Help</a>--}}
                         <a href="{{route('faq')}}">FAQs</a>
                     </div>
                 </div>
                 <div class="container copyright">
                     <div class="row">
                         <div class="col-md-12">
-                            <p>&copy; <a href="#">Odumare Tech</a>, All Right Reserved.</p>
+                            <p>&copy; <a href="#">OdumareTech</a>, All Right Reserved.</p>
                         </div>
                     </div>
                 </div>

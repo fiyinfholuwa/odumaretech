@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Contact;
+use App\Models\MasterClass;
 use Mail;
 use Illuminate\Http\Request;
 use App\Models\Testimonial;
@@ -15,6 +17,7 @@ use App\Models\Innovation;
 use App\Models\Payment;
 use App\Models\Cohort;
 use App\Models\Blog;
+use App\Models\DollarRate;
 use Image;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +32,7 @@ class HomeController extends Controller
 {
     public function index(){
         $testimonials = Testimonial::all();
-        $courses  = Course::offset(0)->limit(3)->get();
+        $courses  = Course::where('normal_display', '=', 'yes')->offset(0)->limit(3)->get();
         return view('frontend.home', compact('testimonials', 'courses'));
     }
 
@@ -114,7 +117,7 @@ class HomeController extends Controller
     }
 
     public function company_view(){
-        $courses= Course::paginate(6);
+        $courses= Course::where('corporate_display', '=', 'yes')->paginate(6);
         return view('frontend.company', compact('courses'));
     }
 
@@ -553,6 +556,60 @@ class HomeController extends Controller
         $randomNumber = mt_rand(pow(10, $length - 1), pow(10, $length) - 1);
         $studentID = $prefix . $randomNumber;
         return $studentID;
+    }
+
+    public function platform_configure(){
+        $dollar_rate = DollarRate::first();
+        return view('admin.platform_configure', compact('dollar_rate'));
+    }
+
+    public function dollar_save(Request $request, $id=null){
+        if($request->id ==null || $request->id ==""){
+            $dollar_rate = new DollarRate;
+            $dollar_rate->price = $request->dollar_rate;
+            $dollar_rate->save();
+            $notification = array(
+                'message' => 'Dollar Rate Successfully saved',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+        }else{
+            $update_dollar =  DollarRate::findOrFail($request->id);
+            $update_dollar->price = $request->dollar_rate;
+            $update_dollar->save();
+            $notification = array(
+                'message' => 'Dollar Rate Successfully updated',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+        }
+    }
+
+    public function platform_message_delete(){
+         Contact::truncate();
+        $notification = array(
+            'message' => 'All messages deleted',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function platform_masterclass_delete(){
+        MasterClass::truncate();
+        $notification = array(
+            'message' => 'All master class feedback deleted',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function platform_corporate_delete(){
+        CompanyTraining::truncate();
+        $notification = array(
+            'message' => 'All corporate feedback deleted',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
 }

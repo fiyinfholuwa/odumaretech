@@ -19,7 +19,7 @@
                                 {{$message}}
                                 @enderror
                                 </small>
-                               
+
                             </div>
                             <div class="form-group">
                             <label for="email2">Slide Category</label>
@@ -31,22 +31,21 @@
                                 </select>
                             </div>
 
-                            
+
                                 <div class="form-group">
-                                <label for="email2">Cohort Category</label>
-                                <select class="form-control" name="cohort_id" id="validationCustom02"  required>
-                                <option disabled selected >Select  Cohort Category</option>
-                                @if(count($cohorts) > 0)
-                                @foreach($cohorts as $cohort)
-                                <option value="{{$cohort->id}}">{{$cohort->name}}</option>
-                                @endforeach
-                                @else
-                                <option disabled>No Cohort</option>
-                                @endif
-                                </select>
+                                <label for="email2">Cohort visibility</label>
+                                <div class="row">
+                                    @foreach($cohorts as $cohort)
+                                        <div class="col-lg-2">
+                                            <label>{{$cohort->name}}</label>
+                                            <input type="checkbox" name="cohort_id[]" value="{{$cohort->id}}">
+                                        </div>
+                                    @endforeach
+
+                                </div>
                             </div>
 
-                            
+
 
                             <div class="form-group">
                                 <label for="email2">Slide Attachement</label>
@@ -56,19 +55,19 @@
                                 {{$message}}
                                 @enderror
                                 </small>
-                               
+
                             </div>
-                        
+
                         </div>
                         <div class="card-action">
                             <button class="btn btn-primary">Add Slide</button>
-                
+
                         </div>
                            </form>
                     </div>
-                    
+
                 </div>
-                
+
             </div>
 
 @endsection

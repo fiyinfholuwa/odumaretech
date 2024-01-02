@@ -51,26 +51,50 @@ class AuthController extends Controller
     }
 
     public function user_dashboard(){
-        $slides = DB::table('slides')
-        ->join('applied_courses', 'slides.course_id', '=', 'applied_courses.course_id')->join('cohorts', 'applied_courses.cohort_id', '=', 'cohorts.id')
-        ->where('applied_courses.user_id', Auth::user()->id)
-        ->where('slides.status', '=', 'active')
-        ->count();
-
+        $applied_courses = AppliedCourse::where('user_id', '=', Auth::user()->id)->get();
+        $all_slides = Slide::where('status', '=', 'active')->get();
+        $slides = 0;
+        foreach ($applied_courses as $arrays) {
+                $courseId = $arrays['course_id'];
+                $cohortId = $arrays['cohort_id'];
+                foreach ($all_slides as $slide) {
+                    if ($slide['course_id'] === $courseId && is_array($slide['cohort_id'])) {
+                        foreach ($slide['cohort_id'] as $id) {
+                            if (in_array($cohortId, $slide['cohort_id'])) {
+                                $slides++;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
         $active = AppliedCourse::where('status', '=', 'pending')->where('user_id', '=', Auth::user()->id)->count();
         $complete =  AppliedCourse::where('status', '=', 'completed')->where('user_id', '=', Auth::user()->id)->count();
         $session = DB::table('live_sessions')
-        ->join('applied_courses', 'live_sessions.course_id', '=', 'applied_courses.course_id')->join('cohorts', 'applied_courses.cohort_id', '=', 'cohorts.id')
+        ->join('applied_courses', 'live_sessions.course_id', '=', 'applied_courses.course_id')->join('cohorts', 'live_sessions.cohort_id', '=', 'cohorts.id')
         ->where('applied_courses.user_id', Auth::user()->id)
         ->where('live_sessions.status', '=', 'active')
         ->count();
 
-        $assignment = DB::table('assignments')
-        ->join('applied_courses', 'assignments.course_id', '=', 'applied_courses.course_id')->join('cohorts', 'applied_courses.cohort_id', '=', 'cohorts.id')
-        ->where('applied_courses.user_id', Auth::user()->id)
-        ->where('assignments.status', '=', 'active')
-        ->count();
-        return view('user.dashboard', compact('slides','active', 'complete', 'session', 'assignment') );
+        $applied_courses = AppliedCourse::where('user_id', '=', Auth::user()->id)->get();
+        $all_assignments = Assignment::where('status', '=', 'active')->get();
+        $assignments = 0;
+        foreach ($applied_courses as $arrays) {
+            $courseId = $arrays['course_id'];
+            $cohortId = $arrays['cohort_id'];
+            foreach ($all_assignments as $assignment) {
+                if ($assignment['course_id'] === $courseId && is_array($assignment['cohort_id'])) {
+                    foreach ($assignment['cohort_id'] as $id) {
+                        if (in_array($cohortId, $assignment['cohort_id'])) {
+                            $assignments++;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return view('user.dashboard', compact('slides','active', 'complete', 'session', 'assignments') );
     }
     public function admin_dashboard(){
 

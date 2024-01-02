@@ -712,6 +712,7 @@ a:focus {
 
 .about .about-text p {
     font-size: 14px;
+    color: #1b1e21;
 }
 
 /* .about .text-left p{
@@ -740,10 +741,29 @@ a:focus {
     background: #041845;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 768px) {
     .about .about-img {
         margin-bottom: 30px;
         height: auto;
+    }
+    .about {
+        position: relative;
+        width: 100%;
+        height: 80vh;
+        padding: 45px 0;
+        /* background-color: #2e5efc; */
+    }
+}
+
+@media (max-width:425px) {
+    .about{
+        height: 120vh;
+    }
+}
+
+@media (max-width:425px) {
+    .about_about{
+        height: 145vh;
     }
 }
 
@@ -2525,7 +2545,7 @@ a:focus {
 }
 .footer .footer-contact p, .footer .newsletter p {
     font-size: 12px;
-    opacity: .5;
+    opacity: 0.8;
 }
 
 .footer .footer-social {
@@ -2652,5 +2672,29 @@ a:focus {
     .footer .copyright .col-md-6:last-child p {
         margin: 5px 0;
         text-align: center;
+    }
+}
+
+
+@media (max-width:768px) {
+    .d-mobile {
+        display: flex !important;
+        margin: 10px 40% !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important; /* Optional, depending on the content */
+        margin-right: -350px !important;
+    }
+}
+
+
+@media (max-width:425px) {
+    .d-mobile {
+        display: flex !important;
+        margin: 10px 35% !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important; /* Optional, depending on the content */
+        margin-right: -250px !important;
     }
 }

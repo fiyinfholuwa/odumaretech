@@ -11,30 +11,31 @@ Terms & Conditions
                             <h2>Terms and Conditions</h2>
                         </div>
                         <div class="col-12">
-                            <a href="{{route('home')}}">Home</a>
-                            <a href="#!">Terms and Conditions</a>
+                            <a style="color: #fff;" href="{{route('home')}}">Home</a>
+                            <a style="color: #fff;" href="#!">Terms and Conditions</a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Single Course Start-->
-            <div class="single">
+            <div style="margin-top: -50px" class="single">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8">
-                            <div class="single-content wow fadeInUp">
+                            <div class="single-content">
                                 <!-- <img src="img/img/pexels-cottonbro-studio-6804073.jpg" /> -->
                                 <div class="sidebar-widget wow fadeInUp">
                                 </div>
                                 <h2>Payment Options</h2>
                                 <p>
-								Students have the flexibility to choose the payment plan that suits them best. We offer a two-installment payment option for the course fee.
+								Students have the flexibility to choose the payment plan that suits them best. We offer a three-installment payment option for the course fee.
                                 </p>
 
                                 <h2>Installment Breakdown</h2>
                                 <p>
-								The payment plan consists of two installments. The first payment is due at the time of enrollment and amounts to 80% of the total course fee. The second installment of 20% is due in the second month.
+                                    The payment plan consists of three installments. The first payment is due at the time of enrollment and amounts to 40% of the total course fee. The second installment of 30% is due in the second month, and the third installment of 30% due in the third month.
+
                                 </p>
 
                                 <h2>Payment Due Dates</h2>
@@ -60,9 +61,9 @@ Terms & Conditions
                                 <p>
 								We accept various payment methods, including credit/debit cards, bank transfers, or online payment platforms. Details regarding payment methods will be provided upon enrollment.
                                 </p>
-                               
+
                             </div>
-                            
+
                         </div>
 
                         <div class="col-lg-4">
@@ -79,15 +80,15 @@ Terms & Conditions
                                         <i class="flaticon-send-mail"></i>
                                         <div class="contact-text">
                                             <h2>Email</h2>
-                                            <p>contact@dumaretech.com</p>
+                                            <p>contact@odumaretech.com</p>
                                         </div>
                                     </div>
-    
+
                                 </div>
-    
+
                                 </div>
-                                
-    
+
+
 
 
                             </div>

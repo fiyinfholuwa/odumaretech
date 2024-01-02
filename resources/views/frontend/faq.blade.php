@@ -12,16 +12,16 @@ FAQ
                             <h2>Frequently Asked Question</h2>
                         </div>
                         <div class="col-12">
-                            <a href="{{route('home')}}">Home</a>
-                            <a href="#!">Frequently Asked Question</a>
+                            <a style="color: #fff;" href="{{route('home')}}">Home</a>
+                            <a style="color:#fff;" href="#!">Frequently Asked Question</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-		
+
        <!-- FAQs Start -->
-	   <div class="faqs">
+	   <div style="margin-top: -100px;" class="faqs">
                 <div class="container">
                     <div class="section-header text-center">
                         <p>Frequently Asked Question</p>
@@ -114,7 +114,7 @@ FAQ
                                     </div>
                                     <div id="collapseSeven" class="collapse" data-parent="#accordion-2">
                                         <div class="card-body">
-										We accept payment in two instalment. You can reach out to finance@odumaretech.com for more details.
+										We accept payment in three instalment. You can reach out to finance@odumaretech.com for more details.
                                         </div>
                                     </div>
                                 </div>

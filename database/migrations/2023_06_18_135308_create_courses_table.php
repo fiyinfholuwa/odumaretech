@@ -23,14 +23,18 @@ return new class extends Migration
             $table->string('start_date', 255)->nullable();
             $table->string('discount', 20)->nullable();
             $table->string('duration', 50)->nullable();
+            $table->string('normal_display', 50)->nullable();
+            $table->string('corporate_display', 50)->nullable();
             $table->integer('category')->nullable();
             $table->text('support')->nullable();
             $table->text('experience')->nullable();
             $table->text('certification')->nullable();
             $table->text('description')->nullable();
+            $table->text('description_corp')->nullable();
             $table->text('image')->nullable();
             $table->timestamps();
         });
+
     }
 
     /**

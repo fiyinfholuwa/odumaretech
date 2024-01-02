@@ -16,4 +16,10 @@ class Assignment extends Model
     {
       return $this->hasOne(Cohort::class, 'id', 'cohort_id');
     }
+
+
+
+    protected $casts = [
+        'cohort_id' => 'array'
+    ];
 }

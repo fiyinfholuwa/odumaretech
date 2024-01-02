@@ -46,7 +46,7 @@
 													<th>Full Name</th>
                                                     <th>Email</th>
                                                     <th>Innovation Topic</th>
-                                                    <th>Gender</th>
+                                                    <th>GitHub</th>
                                                     <th>Action</th>
 
 												</tr>
@@ -61,7 +61,7 @@
                                                 <td>{{$request->name}}</td>
                                                 <td>{{$request->email}}</td>
                                                 <td>{{$request->topic}}</td>
-                                                <td>{{$request->gender}}</td>
+                                                <td><a class="btn btn-primary btn-sm" target="_blank" href="{{$request->gender}}">view link</a></td>
                                                 <td>
                                                     <a href="#" data-toggle="modal" data-target="#inn_{{$request->id}}" ><i style="color:red;" class="fa fa-trash"></i></a>
                                                 </td>

@@ -13,8 +13,8 @@
                     <h2>Corporate Training</h2>
                 </div>
                 <div class="col-12">
-                    <a href="{{route('home')}}">Home</a>
-                    <a href="#">Corporate Training</a>
+                    <a style="color: #fff;" href="{{route('home')}}">Home</a>
+                    <a style="color: #fff;" href="#">Corporate Training</a>
                 </div>
             </div>
         </div>
@@ -23,11 +23,12 @@
     <div class="contact">
         <div class="container">
             <div class="row">
-                <div  style="background-image: url('https://9253440.fs1.hubspotusercontent-na1.net/hubfs/9253440/man%20standing%20at%20a%20podium%20leading%20a%20group%20of%20people%20in%20a%20corporate%20training%20session.jpg'); background-repeat: no-repeat; background-size: cover" class="col-md-6">
+                <div   class="col-md-6">
                     <div class="contact-info">
                         <h3 style="color: #fff; padding: 20px 2px">{{$course->title}}</h3>
 
-                        <p style="color: #fff">{{$course->description}}</p>
+                        <p style="color: #fff">{!! nl2br(e($course->description_corp)) !!}
+                        </p>
                     </div>
                 </div>
                 <div class="col-md-6">

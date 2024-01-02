@@ -57,12 +57,12 @@ Home
             <div class="about">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-lg-5 col-md-6">
+                        <div class="col-lg-5 col-md-6 col-12">
                             <div class="about-img">
                                 <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image">
                             </div>
                         </div>
-                        <div class="col-lg-7 col-md-6">
+                        <div class="col-lg-7 col-md-6 col-12">
                             <div class="section-header text-left">
                                 <p>About Us</p>
                             </div>
@@ -79,13 +79,14 @@ Home
             <!-- About End -->
 
             <!-- Feature Start-->
-            <div class="feature container">
+            <div class="take_it_up feature container">
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-12">
                             <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="flaticon-address" aria-hidden="true"></i>
+                                <div class="feature-i">
+{{--                                    <i class="flaticon-address" aria-hidden="true"></i>--}}
+                                    <i style="padding: 40px;color: #1a82e2" class="fas fa-chalkboard-teacher fa-5x"></i>
                                 </div>
                                 <div class="feature-text">
                                     <h3>Intensive BootCamp</h3>
@@ -96,8 +97,10 @@ Home
                         </div>
                         <div class="col-lg-3 col-md-12">
                             <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="flaticon-building"></i>
+                                <div class="feature-">
+{{--                                    <i class="flaticon-building"></i>--}}
+                                    <i style="padding: 40px;color: #1a82e2" class="fa fa-handshake-o fa-5x" aria-hidden="true"></i>
+
                                 </div>
                                 <div class="feature-text">
                                     <h3>Corporate Training</h3>
@@ -108,8 +111,9 @@ Home
                         </div>
                         <div class="col-lg-3 col-md-12">
                             <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="flaticon-worker"></i>
+                                <div class="feature">
+{{--                                    <i class="flaticon-worker"></i>--}}
+                                    <i style="padding: 40px;color: #1a82e2" class='fab fa-researchgate fa-5x'></i>
                                 </div>
                                 <div class="feature-text">
                                     <h3>Research and Innovation</h3>
@@ -121,8 +125,10 @@ Home
 
                         <div class="col-lg-3 col-md-12">
                             <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="flaticon-building"></i>
+                                <div class="feature">
+{{--                                    <i class="flaticon-building"></i>--}}
+                                    <i style="padding: 40px;color: #1a82e2" class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
+
                                 </div>
                                 <div class="feature-text">
                                     <h3>Free Masterclass</h3>
@@ -386,4 +392,17 @@ Home
                 </div>
             </div>
             <!-- Testimonial End -->
+
+    <style>
+        @media (max-width: 425px) {
+            .abt_text p {
+                min-height: 500px; /* Changed to min-height for better responsiveness */
+            }
+
+            .take_it_up{
+                margin-top: -90px !important;
+            }
+        }
+    </style>
+
 @endsection

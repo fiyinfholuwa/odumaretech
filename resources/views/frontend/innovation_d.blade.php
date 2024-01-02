@@ -22,7 +22,7 @@ Research and Innovation
 
 
     <!-- Single Course Start-->
-    <div class="single">
+    <div style="margin-top: -100px;" class="single">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -86,17 +86,13 @@ Research and Innovation
                             <form  action="{{route('innovation.apply')}}" method="post" name="sentMessage" id="contactForm" novalidate="novalidate">
                                 @csrf
                                 <div class="control-group">
+                                    <label for="gender">Full Name</label> <br>
                                     <input type="text" name="name" class="form-control" id="firstname" placeholder="Full Name" required="required" data-validation-required-message="Please enter your name" />
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <label for="gender">Gender</label> <br>
-                                    <select class="form-control" name="gender" id="gender">
-                                        <option value="">Select Gender Option</option>
-                                        <option value="Male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="prefered not to say">Prefered Not to Say</option>
-                                    </select>
+                                    <label for="gender">Github Link</label> <br>
+                                    <input type="text" name="github" class="form-control" id="firstname" placeholder="GitHub Link" required="required" data-validation-required-message="Please enter your github link." />
                                     <p class="help-block text-danger"></p>
                                 </div>
 
@@ -108,6 +104,7 @@ Research and Innovation
                                 </div>
 
                                 <div class="control-group">
+                                    <label for="gender">Email</label> <br>
                                     <input type="email" name="email" class="form-control" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
                                     <p class="help-block text-danger"></p>
                                 </div>
@@ -120,7 +117,7 @@ Research and Innovation
 
                                 <div class="cards">
 
-                                        <button class="cta-btn" type="submit" id="sendMessageButton">Register to Join</button
+                                        <button class="cta-btn" type="submit" id="sendMessageButton">Register</button>
                                 </div>
 
                             </form>
@@ -134,6 +131,12 @@ Research and Innovation
     </div>
     <!-- Single Post End-->
 
+<style>
 
+    label{
+        color: #fff;
+        padding-top: 10px;
+    }
+</style>
 
 @endsection

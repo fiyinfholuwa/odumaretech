@@ -75,10 +75,10 @@ class PaymentController extends Controller
                 return back()->with($notification);
             }
 
-        }elseif ($request->payment == "stripe") {
+        } elseif ($request->payment == "stripe") {
             $dollar_details = DollarRate::first();
             $dollar_rate = $amount / $dollar_details->price;
-            $checkoutUrl = $this->generateCheckoutUrlStripe(intval($dollar_rate * 100), 'usd', $request->user_email,  $referenceId);
+            $checkoutUrl = $this->generateCheckoutUrlStripe(intval($dollar_rate * 100), 'usd', $request->user_email, $referenceId);
             if ($checkoutUrl) {
                 if (!$check_if_attempt_made) {
                     $payment = new Payment;
@@ -115,7 +115,8 @@ class PaymentController extends Controller
     }
 
 
-    public function paymentCallbackStripeFailed(){
+    public function paymentCallbackStripeFailed()
+    {
         $notification = array(
             'message' => 'Payment not successful, please try again',
             'alert-type' => 'error'
@@ -124,14 +125,14 @@ class PaymentController extends Controller
     }
 
 
-
     public function get_user_id($email)
     {
         $user = User::where('email', $email)->select('id')->first();
         return $user ? $user->id : null;
     }
 
-    public function payment_resolution($id){
+    public function payment_resolution($id)
+    {
         Payment::where('id', $id)->update(['status' => "paid", 'admission_status' => 'accepted']);
         $get_payment_details = Payment::where('id', '=', $id)->first();
         $user_id = $this->get_user_id($get_payment_details->user_email);
@@ -176,7 +177,7 @@ class PaymentController extends Controller
         ];
         $checkoutSession = $this->createCheckoutSessionStripe($checkoutData);
         if (isset($checkoutSession['id'])) {
-            Session::flash('session_id',$checkoutSession['id'] );
+            Session::flash('session_id', $checkoutSession['id']);
             return $checkoutSession['url'];
         } else {
             echo "Failed to create Checkout Session: " . json_encode($checkoutSession);
@@ -213,7 +214,7 @@ class PaymentController extends Controller
         ];
         $checkoutSession = $this->createCheckoutSessionStripe($checkoutData);
         if (isset($checkoutSession['id'])) {
-            Session::flash('session_id',$checkoutSession['id'] );
+            Session::flash('session_id', $checkoutSession['id']);
             return $checkoutSession['url'];
         } else {
             echo "Failed to create Checkout Session: " . json_encode($checkoutSession);
@@ -222,11 +223,12 @@ class PaymentController extends Controller
     }
 
 
-    private function verifyStripePayment($sessionId) {
+    private function verifyStripePayment($sessionId)
+    {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "https://api.stripe.com/v1/checkout/sessions/$sessionId");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-       curl_setopt($ch, CURLOPT_USERPWD, "sk_test_51OR0jZLwe9GisJB4yaT90jNylXv1B31fMX5TGqYlqmOIMmforgM7ih5hzuwSavv8avdcJH88AQf1aItKBYtrdavy0052wAvrhj:");
+        curl_setopt($ch, CURLOPT_USERPWD, env("STRIPE_SECRET_KEY"));
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
             // Handle error
@@ -236,12 +238,13 @@ class PaymentController extends Controller
         return json_decode($result, true);
     }
 
-    public function paymentcallbackstripesuccess(){
+    public function paymentcallbackstripesuccess()
+    {
         $session_id = Session::get('session_id');
         $details = $this->verifyStripePayment($session_id);
         $payment_status = $details['payment_status'];
         $referenceId = $details['client_reference_id'];
-        if($payment_status == "paid"){
+        if ($payment_status == "paid") {
             Payment::where('referenceId', $referenceId)->update(['status' => "paid", 'admission_status' => 'accepted']);
             $get_payment_details = Payment::where('referenceId', '=', $referenceId)->first();
             $applied_course = new AppliedCourse;
@@ -267,6 +270,7 @@ class PaymentController extends Controller
         }
 
     }
+
     private function createCheckoutSessionStripe($data)
     {
         $ch = curl_init();
@@ -274,7 +278,7 @@ class PaymentController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_USERPWD, "sk_test_51OR0jZLwe9GisJB4yaT90jNylXv1B31fMX5TGqYlqmOIMmforgM7ih5hzuwSavv8avdcJH88AQf1aItKBYtrdavy0052wAvrhj:");
+        curl_setopt($ch, CURLOPT_USERPWD,  env("STRIPE_SECRET_KEY"));
         $headers = array();
         $headers[] = "Content-Type: application/x-www-form-urlencoded";
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -436,7 +440,7 @@ class PaymentController extends Controller
             'callback_url' => route('pay.callback.user.complete')
         ];
 
-        if($request->payment == "paystack"){
+        if ($request->payment == "paystack") {
             $pay = json_decode($this->initializePaymentPaystack($formData));
             if ($pay) {
                 if ($pay->status) {
@@ -455,10 +459,10 @@ class PaymentController extends Controller
                 );
                 return back()->with($notification);
             }
-        }elseif ($request->payment == "stripe"){
+        } elseif ($request->payment == "stripe") {
             $dollar_details = DollarRate::first();
             $dollar_rate = $amount / $dollar_details->price;
-            $checkoutUrl = $this->generateCheckoutUrlStripeComplete(intval($dollar_rate * 100), 'usd', Auth::user()->email,  $payment_details->referenceId, $payment_update);
+            $checkoutUrl = $this->generateCheckoutUrlStripeComplete(intval($dollar_rate * 100), 'usd', Auth::user()->email, $payment_details->referenceId, $payment_update);
             if ($checkoutUrl) {
                 return redirect($checkoutUrl);
             } else {
@@ -511,13 +515,14 @@ class PaymentController extends Controller
     }
 
 
-    public function user_complete_callback_stripe_complete(){
+    public function user_complete_callback_stripe_complete()
+    {
         $session_id = Session::get('session_id');
         $details = $this->verifyStripePayment($session_id);
         $payment_status = $details['payment_status'];
         $referenceId = $details['metadata']['referenceId'];
         $payment_type = $details['metadata']['payment_type'];
-        if($payment_status == "paid"){
+        if ($payment_status == "paid") {
             Payment::where('referenceId', $referenceId)->update(['status' => "paid", "payment_type" => $payment_type, "admission_status" => "accepted"]);
             $get_payment_details = Payment::where('referenceId', '=', $referenceId)->first();
             $get_user_detail = AppliedCourse::where('user_id', '=', Auth::user()->id)->where('course_id', '=', $get_payment_details->course_id)->first();

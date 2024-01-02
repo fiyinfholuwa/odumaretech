@@ -6,7 +6,8 @@ use App\Models\InnovationApply;
 use Illuminate\Http\Request;
 use App\Models\Innovation;
 use App\Models\Blog;
-
+use Mail;
+use App\Mail\InnovationMail;
 class InnovationController extends Controller
 {
     public function innovation(){
@@ -41,12 +42,18 @@ class InnovationController extends Controller
         $add_inno->name = $request->name;
         $add_inno->topic = $request->topic;
         $add_inno->email = $request->email;
-        $add_inno->gender = $request->gender;
+        $add_inno->gender = $request->github;
         $add_inno->save();
+
+        $mailData = [
+            'name' => $request->name
+        ];
+        Mail::to($request->email)->send(new InnovationMail($mailData));
         $notification = array(
             'message' => 'Application sent Successfully, we will get back to you shortly',
             'alert-type' => 'success'
         );
+
 
         return redirect()->back()->with($notification);
     }

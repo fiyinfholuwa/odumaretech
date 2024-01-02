@@ -441,7 +441,15 @@
 							</a>
 						</li>
 
-						<li class="nav-item">
+                        <li class="nav-item">
+                            <a href="{{route('platform.configure')}}">
+                                <i class="fa fa-cog"></i>
+                                <p>Platform Configuration</p>
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
 
 						<a href="{{route('logout')}}">
 							<i class="fas fa-sign-out-alt"></i>

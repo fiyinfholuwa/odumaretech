@@ -20,7 +20,7 @@ Blog
                 </div>
             </div>
 
-            <div class="about page">
+            <div style="margin-top: -100px" class="about page ">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 col-md-6">
@@ -45,7 +45,7 @@ Blog
         </div>
     </div>
 				 <!-- Blog Start -->
-                 <div class="blog">
+                 <div style="margin-top: -100px" class="blog course_movement">
                 <div class="container">
 
                     <div class="row">
@@ -84,5 +84,20 @@ Blog
             </div>
             <!-- Blog End -->
 
+
+    <style>
+        @media (max-width: 425px) {
+
+            .course_movement {
+                margin-top: -300px !important;
+                margin-bottom: 0px;
+            }
+        }
+
+        @media (max-width: 375px) {
+
+
+        }
+    </style>
 
 @endsection

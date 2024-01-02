@@ -11,8 +11,8 @@ Contact Us
                             <h2>Register</h2>
                         </div>
                         <div class="col-12">
-                            <a href="index.html">Home</a>
-                            <a href="#">Register</a>
+                            <a style="color:#fff;" href="{{route('home')}}">Home</a>
+                            <a style="color: #fff;" href="#">Register</a>
                         </div>
                     </div>
                 </div>
@@ -21,6 +21,7 @@ Contact Us
             <!-- Contact Start -->
             <div class="contact ">
                 <div class="container">
+
                     <div class="row">
                         <div class="col-md-6" style="background-image: url('https://cdn-icons-png.flaticon.com/512/295/295128.png'); background-size: cover;">
                             <div class="contact-info">

@@ -11,15 +11,15 @@ Contact Us
                             <h2>Contact</h2>
                         </div>
                         <div class="col-12">
-                            <a href="index.html">Home</a>
-                            <a href="#">Contact Us</a>
+                            <a style="color: #fff;" href="index.html">Home</a>
+                            <a style="color: #fff" href="#">Contact Us</a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Contact Start -->
-            <div class="contact ">
+            <div style="margin-top: -50px;" class="contact ">
                 <div class="container">
                     <div class="section-header text-center">
                         <p>Get In Touch</p>
@@ -39,7 +39,7 @@ Contact Us
                                     <i class="flaticon-send-mail"></i>
                                     <div class="contact-text">
                                         <h2>Email</h2>
-                                        <p>contact@dumaretech.com</p>
+                                        <p>contact@odumaretech.com</p>
                                     </div>
                                 </div>
                                 <div class="contact-item">

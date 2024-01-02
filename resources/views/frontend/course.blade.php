@@ -11,14 +11,14 @@ Courses
                             <h2>Our Courses</h2>
                         </div>
                         <div class="col-12">
-                            <a href="{{route('home')}}">Home</a>
-                            <a href="#">Our Courses</a>
+                            <a style="color: #fff;" href="{{route('home')}}">Home</a>
+                            <a style="color: #fff;" href="#!">Our Courses</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-    <div class="about page">
+    <div style="margin-top: -120px" class="about page course_movement">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 col-md-6">
@@ -31,26 +31,25 @@ Courses
                         <p>Unlock Your Potential with Expert-Led Courses</p>
                     </div>
                     <div class="about-text">
-
                         <p>
                             Our meticulously crafted curriculum, taught by industry professionals, ensures a seamless journey from beginner to pro, setting industry standards while maintaining beginner-friendly accessibility
-
                         </p>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>
     <!-- About End -->
 
     <!-- Courses Start-->
-            <div class="service">
+            <div style="margin-top: -100px" class="service">
                 <div class="container">
                     <div class="section-header text-center">
 
                         <!-- <h2>We Provide Highly Structured Training and Courses</h2> -->
                     </div>
-                    <div class="row portfolio container">
+                    <div class="row  container">
 
                     @if(count($courses) > 0)
                     @foreach($courses as $course)
@@ -80,5 +79,23 @@ Courses
                     {{$courses->links('frontend.paginate')}}
                 </div>
             </div>
+
+    <style>
+        @media (max-width: 425px) {
+            .course_movement {
+                min-height: 400px !important;
+                padding-top: 100px;
+                /*margin-top: -100px !important;*/
+            }
+
+        }
+
+        @media (max-width: 375px) {
+            .course_movement {
+                height: 350px !important;
+            }
+
+        }
+    </style>
 
 @endsection

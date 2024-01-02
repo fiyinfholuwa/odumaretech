@@ -29,12 +29,13 @@ class UserController extends Controller
 
     public function resource_detail($id, $co){
         $course_title = Course::where('id', '=', $id)->first();
-        $resources = Slide::where('course_id', '=', $id)->where('cohort_id', '=', $co)
-        ->where('status', '=', 'active')->get();
+        $resources = Slide::where('course_id', '=', $id)->whereJsonContains('cohort_id', [$co])
+            ->where('status', 'active')
+            ->get();
         return view('user.resource_detail', compact('resources', 'course_title'));
     }
 
-    
+
     public function course_active(){
         $courses= $this->user_info_pending();
         return view('user.course_active', compact('courses'));
@@ -88,7 +89,7 @@ class UserController extends Controller
     }
 
     public function project_submit_user(Request $request, $id){
-        
+
         $check_project = FinalProject::where('id', '=', $id)->first();
         $course_id = $check_project->course_id;
         $assignment_id = $check_project->id;
@@ -161,7 +162,7 @@ class UserController extends Controller
             return redirect()->route('project.submitted.user')->with($notification);
 
         }
-        
+
     }
 
 
@@ -181,8 +182,10 @@ class UserController extends Controller
 
     public function assignment_user_all($id, $co){
         $course_title = Course::where('id', '=', $id)->first();
-        $assignments = Assignment::where('course_id', '=', $id)->where('cohort_id', '=', $co)
-        ->where('status', '=', 'active')->get();
+        $assignments = Assignment::where('course_id', $id)
+            ->whereJsonContains('cohort_id', [$co])
+            ->where('status', 'active')
+            ->get();
         return view('user.assignment_all', compact('assignments', 'course_title'));
     }
 
@@ -193,7 +196,7 @@ class UserController extends Controller
 
 
     public function assignment_submit_user(Request $request, $id){
-        
+
         $check_assignment = Assignment::where('id', '=', $id)->first();
         $course_id = $check_assignment->course_id;
         $assignment_id = $check_assignment->id;
@@ -209,7 +212,7 @@ class UserController extends Controller
             );
             return redirect()->route('assignment.submitted.user')->with($notification);
         }
-        
+
         if(!$check_assignment_submitted){
             $submit = new SubmitAssignment;
             if($request->hasfile('image')){
@@ -266,7 +269,7 @@ class UserController extends Controller
             return redirect()->route('assignment.submitted.user')->with($notification);
 
         }
-        
+
     }
 
 
@@ -284,7 +287,7 @@ class UserController extends Controller
         ->where('status', '=', 'pending')->where('admission_status', '=', 'accepted')->get();
     }
 
-    
+
     public function user_info_complete(){
         return AppliedCourse::where('user_id', '=', Auth::user()->id)
         ->where('status', '=', 'completed')->get();
@@ -296,7 +299,7 @@ class UserController extends Controller
         $ids = collect($course_ids)->pluck('course_id');
         $courses = Course::whereIn('id', $ids)
         ->select('id', 'title')
-        ->get(); 
+        ->get();
         return view('user.chat_view', compact('courses'));
     }
     public function chat_user_add(Request $request){
@@ -340,7 +343,7 @@ class UserController extends Controller
 
     public function get_user_courses_id(){
         return AppliedCourse::where('user_id', '=', Auth::user()->id)->where('status', '=', 'pending')->select('course_id')->get();
-        
+
     }
     public function user_password_view(){
         return view('user.change_password');
