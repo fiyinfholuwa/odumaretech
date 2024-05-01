@@ -7,7 +7,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-danger" id="exampleModalLabel">Update Applied Student Cohort</h5>
-        
+
 
       </div>
       <div class="modal-body">
@@ -24,6 +24,20 @@
         @endif
         </select>
     </div>
+
+          <div class="form-group">
+              <label for="email2">Course Category</label>
+              <select class="form-control" name="course_id" id="validationCustom02"  required>
+                  <option disabled selected >Select Course Category</option>
+                  @if(count($courses) > 0)
+                      @foreach($courses as $course)
+                          <option value="{{$course->id}}" {{$course->id== $ap->course_id ? "selected" : ""}}>{{$course->title}}</option>
+                      @endforeach
+                  @else
+                      <option disabled>No Cohort</option>
+                  @endif
+              </select>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

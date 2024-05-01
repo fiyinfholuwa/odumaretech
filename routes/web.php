@@ -83,8 +83,11 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/admin/password/view/', 'admin_password_view')->name('admin.password.view');
     Route::post('/admin/password/change/', 'admin_password_change')->name('admin.password.change');
     Route::post('/admin/user/lock/{id}', 'user_lock')->name('user.lock');
+Route::post('/admin/user/lock/lock/{id}', 'user_lock_lock')->name('user.lock.lock');
 
     Route::get('/admin/applied/user/view', 'applied_view')->name('applied.view');
+    Route::get('/admin/user/view', 'admin_user_view')->name('admin.user.view');
+    Route::post('/admin/user/add', 'admin_user_add')->name('admin.user.add');
     Route::post('/admin/applied/user/update/{id}', 'applied_users_update')->name('applied.user.update');
     Route::post('/admin/dollar/save/', 'dollar_save')->name('dollar.save');
     Route::get('/admin/platform/configure', 'platform_configure')->name('platform.configure');
@@ -176,6 +179,7 @@ Route::controller(PaymentController::class)->group(function () {
     Route::get('/payment/callback/stripe/success/complete', 'user_complete_callback_stripe_complete')->name('pay.callback.stripe.success.complete');
 
     Route::get('/admin/transactions/all', 'transactions')->name('transaction.all');
+    Route::post('/admin/fix/payment/{id}', 'admin_fix_payment')->name('admin.fix.payment');
     Route::get('/user/transactions/all', 'transactions_user')->name('transaction.user.all');
     Route::post('/payment/conplete/{id}', 'user_complete')->name('user.complete.payment');
     Route::post('/payment/resolution/{id}', 'payment_resolution')->name('payment.resolution');

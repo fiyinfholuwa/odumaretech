@@ -552,4 +552,17 @@ class PaymentController extends Controller
 
     }
 
+
+    public function admin_fix_payment(Request $request, $id){
+        $payment = Payment::findOrfail($id);
+        $payment->amount = $request->amount;
+        $payment->payment_type = $request->payment_type;
+        $payment->save();
+        $notification = array(
+            'message' => 'Payment Issues Successfully Fixed',
+            'alert-type' => 'success'
+        );
+        return back()->with($notification);
+    }
+
 }

@@ -352,7 +352,14 @@
 							</a>
 							<div class="collapse" id="account">
 								<ul class="nav nav-collapse">
-									<li>
+                                    <li>
+                                        <a href="{{route('admin.user.view')}}">
+                                            <span class="sub-item">Add User</span>
+                                        </a>
+                                    </li>
+
+
+                                    <li>
 									<a href="{{route('student.all')}}">
 											<span class="sub-item">All Users</span>
 										</a>

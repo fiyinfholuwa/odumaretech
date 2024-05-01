@@ -14,17 +14,17 @@
                                     <div class="" style="">
 
                                     <input name="date_from" class="form-control "  type="date"  placeholder="Start Date"    required/>
-                                    
+
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-12 mt-1">
                                     <div class="" style="">
 
                                     <input name="date_to" class="form-control "  type="date"  placeholder="End Date"   required/>
-                                    
+
                                     </div>
                                 </div>
-                                
+
                                 <div>
                                 <div class="col-lg-1 ml-5 col-4 mt-1" >
                                 <button type="submit" class='btn btn-secondary btn-sm'>Export to CSV</button>
@@ -34,7 +34,7 @@
                         </form>
 
                     <div class="bg-white p-3   align-items-center">
-                
+
 
                 <div class="card-body">
                     <div class="table-responsive">
@@ -47,29 +47,31 @@
                                     <th>Email</th>
                                     <th>Student ID</th>
                                     <th>Action</th>
-        
+
                                 </tr>
                             </thead>
-                           
+
                             <tbody>
                             <?php $i = 1; ?>
                              @foreach($users as $user)
                              <tr>
-                             
+
                              <td>{{$i++;}}</td>
                              <td>{{$user->first_name}}</td>
                              <td>{{$user->last_name}}</td>
                              <td>{{$user->email}}</td>
                              <td>{{$user->student_id}}</td>
                              <td>
-                                
+
                             <a href="#" data-toggle="modal" data-target="#student_{{$user->id}}" ><i style="color:red;" class="fa fa-trash"></i></a>
+
                             </td>
                             @include('admin.modal.deleteStudent')
-                             
+
+
                              @endforeach
                             </tbody>
-                           
+
                         </table>
                     </div>
                 </div>

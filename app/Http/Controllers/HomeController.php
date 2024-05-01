@@ -26,6 +26,7 @@ use App\Mail\ApplicantNotification;
 use App\Mail\CorporateMail;
 use App\Mail\InstructorApply;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class HomeController extends Controller
@@ -125,6 +126,44 @@ class HomeController extends Controller
     public function company_view_detail($id){
         $course= Course::findOrFail($id);
         return view('frontend.company_d', compact('course'));
+    }
+
+    public function admin_user_view(){
+        $courses = Course::all();
+        $cohorts = Cohort::all();
+        return view('admin.user_admin_view', compact('courses','cohorts'));
+    }
+
+    public function admin_user_add(Request $request){
+        $request->validate([
+            'first_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required']
+        ]);
+        $prefix = 'odumaretech';
+        $studentID = $this->generateStudentID($prefix);
+        $newUser = User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'student_id' => $studentID,
+            'password' => Hash::make($request->password),
+        ]);
+
+        $applied_course = new AppliedCourse;
+        $applied_course->user_id = $newUser->id;
+        $applied_course->course_id = $request->course_id;
+        $applied_course->status = "pending";
+        $applied_course->payment_type = "full";
+        $applied_course->admission_status = "accepted";
+        $applied_course->cohort_id = $request->cohort_id;
+        $applied_course->payment_id = "none";
+        $applied_course->save();
+        $notification = array(
+            'message' => 'User successfully registered',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     public function company_add(Request $request){
@@ -486,25 +525,6 @@ class HomeController extends Controller
     }
 
 
-    public function user_lock(Request $request, $id){
-
-        // dd(isset($_POST));
-        if(isset($_POST['lock'])){
-            $status = "rejected";
-        }else{
-            $status = "accepted";
-        }
-        $pay_detail = Payment::findOrFail($id);
-        $pay_d = AppliedCourse::where('payment_id', '=', $pay_detail->id)->update(['admission_status' => $status]);
-        $pay_detail->admission_status = $status;
-        $pay_detail->save();
-        $notification = array(
-            'message' => 'Student Admission Successfully updated',
-            'alert-type' => 'success'
-        );
-        return redirect()->back()->with($notification);
-    }
-
     public function admin_password_view(){
         return view('admin.change_password');
     }
@@ -537,16 +557,32 @@ class HomeController extends Controller
 
     public function applied_view(){
         $cohorts = Cohort::all();
-        $applied = AppliedCourse::all();
-        return view('admin.applied_student_all', compact('applied', 'cohorts'));
+        $courses = Course::all();
+        $applied = User::leftJoin('applied_courses', 'users.id', '=', 'applied_courses.user_id')
+            ->leftJoin('cohorts', 'cohorts.id', '=', 'applied_courses.cohort_id')
+            ->leftJoin('courses', 'courses.id', '=', 'applied_courses.course_id')
+            ->whereNotNull('applied_courses.user_id') // Filter only users with records in applied_courses
+            ->select(
+                'users.first_name',
+                'users.last_name',
+                'users.email',
+                'users.student_id',
+                'cohorts.name as cohort_name',
+                \DB::raw("IFNULL(cohorts.name, 'not set') as cohort_name_default"),
+                'courses.title as course_title',
+                'applied_courses.*' // Select all columns from applied_courses
+            )
+            ->get();
+        return view('admin.applied_student_all', compact('applied', 'cohorts', 'courses'));
     }
 
     public function applied_users_update(Request $request, $id){
         $applied_course = AppliedCourse::findOrFail($id);
         $applied_course->cohort_id = $request->cohort_id;
+        $applied_course->course_id = $request->course_id;
         $applied_course->save();
         $notification = array(
-            'message' => 'Cohort successfully updated',
+            'message' => 'User Info successfully updated',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
@@ -583,6 +619,23 @@ class HomeController extends Controller
             );
             return redirect()->back()->with($notification);
         }
+    }
+
+    public function user_lock_lock(Request $request,$id){
+        if (request()->has('lock')){
+        $status = 'rejected';
+        }else{
+            $status = 'accepted';
+        }
+        $message = $status == 'rejected' ? 'deactivated' : 'activated';
+        $applied = AppliedCourse::findOrFail($id);
+        $applied->admission_status = $status;
+        $applied->save();
+        $notification = array(
+            'message' => 'User Account Successfully '.$message,
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     public function platform_message_delete(){

@@ -28,8 +28,6 @@
                                    </div>
 
                                @endif
-
-
                                <div class="form-group">
                                 <label for="email2">Assignment Attachement (Optional)</label>
                                 <input type="file" class="form-control" id="email2"  name="image" >

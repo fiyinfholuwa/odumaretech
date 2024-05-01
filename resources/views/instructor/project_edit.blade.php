@@ -19,7 +19,7 @@
                                 {{$message}}
                                 @enderror
                                 </small>
-                               
+
                             </div>
                             <div class="form-group">
                             <label for="email2">Project Category</label>
@@ -46,8 +46,17 @@
                                 </select>
                             </div>
 
+                                <div class="form-group">
+                                <label for="email2">Project Status</label>
+                                <select class="form-control" name="status" id="validationCustom02"  required>
+                                <option value="{{$project->status}}">{{$project->status == 'pending' ? 'Draft' : 'Publish'}}</option>
+                                <option value="pending">Draft</option>
+                                <option value="active">Publish</option>
+                                </select>
+                            </div>
 
-                            
+
+
                             <div class="form-group">
                                 <label for="email2">Project Attachement</label>
                                 <input type="file" class="form-control" id="email2"   name="image" >
@@ -57,7 +66,7 @@
                                 {{$message}}
                                 @enderror
                                 </small>
-                               
+
                             </div>
 
 
@@ -67,20 +76,20 @@
                                 <small style="color:red; font-weight:500">
                                 </small>
                             </div>
-                            
-                        
+
+
                         </div>
                         <div class="card-action">
                             <button class="btn btn-primary">Update Project</button>
-                
+
                         </div>
-                        
+
                            </form>
                     </div>
-                    
+
                 </div>
 
-                
+
             </div>
 
 @endsection

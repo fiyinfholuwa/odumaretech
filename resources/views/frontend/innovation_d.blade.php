@@ -42,7 +42,7 @@ Research and Innovation
                         @endif
                         <h2>Project Description</h2>
                         <p>
-                            {{$innovation->description}}
+                            {!! nl2br(e($innovation->description)) !!}
                         </p>
 
                         @if($innovation->status == 'Upcoming')

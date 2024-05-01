@@ -339,7 +339,7 @@ class InstructorController extends Controller
         $user_name = $user_detail->first_name;
         $user_email = $user_detail->email;
         $update_user =  AppliedCourse::where('user_id', '=', $assignment->user_id)->where('course_id','=', $assignment->course_id)->first();
-        
+
         $update_user->update(['status' => "completed"]);
 
         $mailData = [
@@ -379,7 +379,7 @@ public function view_submitted_project($id){
     }
 
 
-    
+
     public function get_instructor_courses(){
         $fetch_instructor_detail = ApprovedInstructor::where('user_id', '=', Auth::user()->id)->first();
         $course_ids = $fetch_instructor_detail->course_ids;
@@ -508,7 +508,7 @@ public function view_submitted_project($id){
             'message' => 'Password Changed Successfully',
             'alert-type' => 'success'
         );
-        
+
         return redirect()->back()->with($notification);
     }else{
         $notification = array(
@@ -540,7 +540,7 @@ public function project_final_all(){
 }
 
 public function project_final_add(Request $request){
-    
+
         $new_project = new FinalProject;
 
         $check_project = FinalProject::where('course_id', '=', $request->course_id)->where('cohort_id', '=', $request->cohort_id)->first();
@@ -573,7 +573,7 @@ public function project_final_add(Request $request){
         );
         return redirect()->back()->with($notification);
 
-    
+
 }
 
     public function project_update(Request $request, $id){
@@ -586,14 +586,15 @@ public function project_final_add(Request $request){
                 $file_unique_name = uniqid();
                 $image->storeAs( '/project' , "/" . $file_unique_name . "_odumaretech" . "." .$filename, 'public');
                 $path = "storage/project/" . $file_unique_name . "_odumaretech" . "." .$filename;
-    
+
             }else{
                 $path = $project_update->image;
             }
-    
+
             $project_update->course_id = $request->course_id;
             $project_update->cohort_id = $request->cohort_id;
             $project_update->title = $request->title;
+            $project_update->status = $request->status;
             $project_update->image = $path;
             $project_update->description = $request->description;
             $project_update->save();
