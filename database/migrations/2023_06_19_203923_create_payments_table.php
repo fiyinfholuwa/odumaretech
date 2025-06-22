@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('payment_type', 50)->nullable();
             $table->string('admission_status', 50)->nullable();
             $table->string('referenceId', 50)->nullable();
+            $table->text('bank_info')->nullable();
             $table->string('course_id', 50)->nullable();
             $table->string('cohort_id', 50)->nullable();
             $table->timestamps();

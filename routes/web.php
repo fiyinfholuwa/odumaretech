@@ -83,7 +83,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/admin/password/view/', 'admin_password_view')->name('admin.password.view');
     Route::post('/admin/password/change/', 'admin_password_change')->name('admin.password.change');
     Route::post('/admin/user/lock/{id}', 'user_lock')->name('user.lock');
-Route::post('/admin/user/lock/lock/{id}', 'user_lock_lock')->name('user.lock.lock');
+    Route::post('/admin/user/lock/lock/{id}', 'user_lock_lock')->name('user.lock.lock');
 
     Route::get('/admin/applied/user/view', 'applied_view')->name('applied.view');
     Route::get('/admin/user/view', 'admin_user_view')->name('admin.user.view');

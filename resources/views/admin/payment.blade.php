@@ -23,6 +23,7 @@
                                     <th>Payment Method</th>
                                     <th>Admission Status</th>
                                     <th>Payment Type</th>
+                                    <th>Bank Transfer Info</th>
                                     <th>Status</th>
 {{--                                    <th>Action</th>--}}
                                     <th>Payment resolution</th>
@@ -56,7 +57,42 @@
                                 @endif
                              </td>
 
-                             <td> @if($pay->status === "paid")
+                                 <td> @if($pay->payment === "bank transfer")
+                                         <a href="#" data-toggle="modal" data-target="#bank_transfer_{{$pay->id}}" ><button class="badge bg-warning text-white"><i class="fas fa-eye"></i></button></a>
+
+                                         <div class="modal fade" id="bank_transfer_{{$pay->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                             <div class="modal-dialog" role="document">
+                                                 <form action="" method="">
+                                                     @csrf
+                                                     <div class="modal-content">
+                                                         <div class="modal-header">
+                                                             <h5 class="modal-title text-danger" id="exampleModalLabel">Bank Transfer Information</h5>
+
+                                                         </div>
+                                                         @php
+                                                         $bank_info = json_decode($pay->bank_info, true);
+                                                         @endphp
+                                                         <div class="modal-body">
+                                                             <h3>Amount Sent: <span style="color: #4d7cfe; font-weight: 800;"> &#163;{{$bank_info['amount_sent']}}</span></h3>
+                                                             <h3>Bank Name: <span style="color: #4d7cf5; font-weight: 800;">{{$bank_info['bank_name']}}</span></h3>
+                                                             <h3>Account Name: <span style="color: #4d7cf2; font-weight: 800;">{{$bank_info['account_name']}}</span></h3>
+                                                         </div>
+                                                         <div class="modal-footer">
+                                                             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+{{--                                                             <button type="submit"  class="btn btn-success btn-sm">Fix Payment</button>--}}
+                                                         </div>
+                                                     </div>
+                                                 </form>
+                                             </div>
+                                         </div>
+                                     @else
+                                         <span class="btn btn-primary text-white btn-sm">Not Bank Payment</span>
+                                     @endif
+                                 </td>
+
+
+
+                                 <td> @if($pay->status === "paid")
                                 <span class="btn btn-success text-white btn-sm"> {{$pay->status}} </span>
                                 @else
                                 <span class="btn btn-warning text-white btn-sm"> {{$pay->status}} </span>

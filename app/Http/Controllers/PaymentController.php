@@ -38,6 +38,32 @@ class PaymentController extends Controller
             'metadata' => ['referenceId' => $referenceId],
             'callback_url' => route('pay.callback.paystack')
         ];
+
+        if ($request->payment =='bank_transfer') {
+            $bank_info = array(
+                'amount_sent' => $request->amount_sent,
+                'bank_name' => $request->bank_name,
+                'account_name' => $request->account_name
+            );
+            $payment = new Payment;
+            $payment->referenceId = $referenceId;
+            $payment->payment = "bank transfer";
+            $payment->amount = $amount;
+            $payment->cohort_id = $request->cohort_id;
+            $payment->user_email = $request->user_email;
+            $payment->status = "pending";
+            $payment->bank_info = json_encode($bank_info);
+            $payment->admission_status = "pending";
+            $payment->course_id = $request->course_id;
+            $payment->payment_type = $request->payment_type;
+            $payment->save();
+            $notification = array(
+                'message' => 'Your request has been sent, we will get back to you shortly',
+                'alert-type' => 'success'
+            );
+            return back()->with($notification);
+        }
+
         if ($request->payment == "paystack") {
             $pay = json_decode($this->initializePaymentPaystack($formData));
             if ($pay) {
@@ -143,6 +169,7 @@ class PaymentController extends Controller
         $applied_course->payment_type = $get_payment_details->payment_type;
         $applied_course->admission_status = "accepted";
         $applied_course->payment_id = $get_payment_details->id;
+        $applied_course->cohort_id = $get_payment_details->cohort_id;
         $applied_course->save();
         $notification = array(
             'message' => 'Payment Resolved',
@@ -429,6 +456,24 @@ class PaymentController extends Controller
                 'alert-type' => 'error'
             );
 
+            return back()->with($notification);
+        }
+
+        if ($request->payment =='bank_transfer') {
+            $bank_info = array(
+                'amount_sent' => $request->amount_sent,
+                'bank_name' => $request->bank_name,
+                'account_name' => $request->account_name
+            );
+            $payment =  Payment::findOrFail($id);
+            $payment->payment = "bank transfer";
+            $payment->amount = $amount;
+            $payment->bank_info = json_encode($bank_info);
+            $payment->save();
+            $notification = array(
+                'message' => 'Your request has been sent, we will get back to you shortly',
+                'alert-type' => 'success'
+            );
             return back()->with($notification);
         }
 
